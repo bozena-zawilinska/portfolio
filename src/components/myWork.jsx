@@ -62,7 +62,7 @@ class MyWork extends Component {
                     <a
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="https://github.com/bozena-zawilinska/myportfolio.git"
+                    href="https://github.com/bozena-zawilinska/portfolio.git"
                     className="btn btn-outline-dark"
                     role="button"
                     >
