@@ -519,6 +519,11 @@ label {
    ============================= */
 #work-page {
   margin-top: 150px;
+
+  .mt-3,
+  .my-3 {
+    margin-top: 0 !important;
+  }
 }
 
 #logo-design {

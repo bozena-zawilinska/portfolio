@@ -30,6 +30,19 @@ class MyWork extends Component {
       <div className="container">
         <div id="work-page" className="page">
           <div className="box">
+             <div className="col align-self-start">
+                  <h3 className="h3 mt-3">My work</h3>
+                  <hr />
+                  <p>
+                    I'm currently working as a WordPress Developer for a marketing agency, where I had a chance to build awesome websites for Scottish organisations. Here are some of them:
+                    <ul>
+                      <li><a href="https://children.nhslothian.scot">NHS Lothian</a></li>
+                      <li><a href="https://environmentalkeyfund.com">Environmental Key Fund</a></li>
+                      <li><a href="https://knowledgeequity.org">The Centre for Knowledge Equity</a></li>
+                      <li><a href="dwsc-research.org">Decent Work in Social Care</a></li>
+                    </ul>
+                  </p>
+                </div>
             <div className="col align-self-start">
               <div className="row">
                 <button className="collapsible">
