@@ -47,7 +47,7 @@ class NavBar extends Component {
       <div className="site-header">
         <nav id="navbar" className="navbar navbar-expand-lg navbar-dark bg-dark">
           <div className="site-title">
-            <a id="logo" className="navbar-brand" href="/">
+            <a id="logo" className="navbar-brand" href="https://bozena-zawilinska.github.io/portfolio/">
               <img src={logo} alt="" />
             </a>
           </div>
