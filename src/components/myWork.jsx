@@ -30,7 +30,7 @@ class MyWork extends Component {
       <div className="container">
         <div id="work-page" className="page">
           <div className="box">
-             <div className="col align-self-start">
+             <div id="work-box" className="col align-self-start">
                   <h3 className="h3 mt-3">My work</h3>
                   <hr />
                   <p>

@@ -518,7 +518,11 @@ label {
 /* 5. MY WORK
    ============================= */
 #work-page {
-  margin-top: 150px;
+  padding-top: 100px;
+
+  #work-box {
+    margin-bottom: 50px;
+  }
 
   .mt-3,
   .my-3 {
@@ -597,7 +601,7 @@ img#work {
   color: white;
   cursor: pointer;
   font-size: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   outline: none;
   padding: 18px;
   width: 100%;
