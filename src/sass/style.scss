@@ -176,23 +176,6 @@ $p: (
   position: relative;
 }
 
-// .site-header:after {
-//   background: $palette-color-5 !important;
-//   color: $palette-color-5 !important;
-//   border-radius: 100%;
-//   content: "";
-//   display: flex;
-//   font-size: 3rem;
-//   line-height: 6rem;
-//   margin: 0 auto;
-//   position: relative;
-//   top: 2.25rem; // -3.25rem;
-//   width: 10rem;
-//   height: 5rem;
-//   text-indent: 1.75rem;
-//   z-index: 0;
-// }
-
 .navbar-dark .navbar-toggler {
   color: transparent !important;
   border-color: transparent !important;
@@ -200,6 +183,23 @@ $p: (
 
 .navbar-dark .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1.0%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* Animation */
+.nav-item .nav-link:focus {
+  -webkit-animation-name: flipInX;
+  -moz-animation-name: flipInX;
+  -o-animation-name: flipInX;
+  animation-name: flipInX;
+  -webkit-animation-duration: 3s;
+  -moz-animation-duration: 3s;
+  -ms-animation-duration: 3s;
+  -o-animation-duration: 3s;
+  animation-duration: 3s;
+}
+
+.nav-item .nav-link.active {
+  font-weight: 700;
 }
 
 /*** tablet portrait / mobile landscape ***/
@@ -644,8 +644,8 @@ img#work {
   animation-duration: 1.5s;
 }
 
-.active,
-.collapsible:hover {
+.collapsible:hover,
+.collapsible.active {
   background-color: $palette-color-6;
   border-radius: 30px;
 }
