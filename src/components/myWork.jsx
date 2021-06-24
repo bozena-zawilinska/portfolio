@@ -36,10 +36,12 @@ class MyWork extends Component {
               <p>
                 I'm currently working as a WordPress Developer for a marketing agency, where I had a chance to build awesome websites for Scottish organisations. Here are some of them:
                 <ul>
-                  <li><a href="https://children.nhslothian.scot" target="_blank">NHS Lothian</a></li>
-                  <li><a href="https://environmentalkeyfund.com" target="_blank">Environmental Key Fund</a></li>
-                  <li><a href="https://knowledgeequity.org" target="_blank">The Centre for Knowledge Equity</a></li>
+                  <li><a href="https://cerebralpalsyscotland.org.uk/" target="_blank">Cerebral Palsy Scotland</a></li>
                   <li><a href="dwsc-research.org" target="_blank">Decent Work in Social Care</a></li>
+                  <li><a href="https://environmentalkeyfund.com" target="_blank">Environmental Key Fund</a></li>
+                  <li><a href="https://justenterprise.org/landing-page/" target="_blank">Just Enterprise</a></li>
+                  <li><a href="https://knowledgeequity.org" target="_blank">The Centre for Knowledge Equity</a></li>
+                  <li><a href="https://children.nhslothian.scot" target="_blank">NHS Lothian</a></li>
                 </ul>
               </p>
             </div>
