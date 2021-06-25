@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import Skills from "./skills";
-import LinkedinBackground from "../img/LinkedinBackground.png";
+import LinkedinBackground from "../img/linkedin-background-2021-07.png";
 import "../sass/style.scss";
 
 class About extends Component {

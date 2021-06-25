@@ -68,10 +68,10 @@ class NavBar extends Component {
           <div className={`${classOne}`} id="navbarResponsive">
             <div className="header-main">
               <ul className="navbar-nav">
-                {/* <li className="nav-item" click="onClick()">
+                {/* <li className="nav-item">
                   <NavLink
                     className="nav-link"
-                    to="/"
+                    to="/portfolio"
                     onClick={this.toggleNavbar}
                   >
                     HOME
@@ -86,7 +86,7 @@ class NavBar extends Component {
                     ABOUT
                   </NavLink>
                 </li>
-                <li className="nav-item" click="onClick()">
+                <li className="nav-item">
                   <NavLink
                     className="nav-link"
                     to="/portfolio/accessibility"
