@@ -23,14 +23,14 @@ class App extends Component {
         <div class="site-container">
           <NavBar />
           <Switch>
-            <Route path="/about" component={About} />
-            <Route path="/my-work" component={MyWork} />
-            <Route path="/contact" component={ContactMe} />
-            <Route path="/accessibility" component={Accessibility} />
-            <Route path="/not-found" component={NotFound} />
+            <Route path="/portfolio/about" component={About} />
+            <Route path="/portfolio/my-work" component={MyWork} />
+            <Route path="/portfolio/contact" component={ContactMe} />
+            <Route path="/portfolio/accessibility" component={Accessibility} />
+            <Route path="/portfolio/not-found" component={NotFound} />
             <Route path="" component={Homepage} />
-            <Redirect from="/" exact to="" />
-            <Redirect to="/not-found" />
+            <Redirect from="/portfolio/" exact to="" />
+            <Redirect to="/portfolio/not-found" />
           </Switch>
           <FooterPage />
         </div>

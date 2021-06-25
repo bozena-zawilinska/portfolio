@@ -80,7 +80,7 @@ class NavBar extends Component {
                 <li className="nav-item">
                   <NavLink
                     className="nav-link"
-                    to="/about"
+                    to="/portfolio/about"
                     onClick={this.toggleNavbar}
                   >
                     ABOUT
@@ -89,7 +89,7 @@ class NavBar extends Component {
                 <li className="nav-item" click="onClick()">
                   <NavLink
                     className="nav-link"
-                    to="/accessibility"
+                    to="/portfolio/accessibility"
                     onClick={this.toggleNavbar}
                   >
                     ACCESSIBILITY
@@ -98,7 +98,7 @@ class NavBar extends Component {
                 <li className="nav-item">
                   <NavLink
                     className="nav-link"
-                    to={"/contact"}
+                    to={"/portfolio/contact"}
                     onClick={this.toggleNavbar}
                   >
                     CONTACT&nbsp;ME
@@ -107,7 +107,7 @@ class NavBar extends Component {
                 <li className="nav-item">
                   <NavLink
                     className="nav-link"
-                    to="/my-work"
+                    to="/portfolio/my-work"
                     onClick={this.toggleNavbar}
                   >
                     MY&nbsp;WORK

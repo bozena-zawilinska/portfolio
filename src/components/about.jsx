@@ -54,7 +54,7 @@ class About extends Component {
                       href="/contact"
                       role="button"
                     >
-                      <NavLink className="nav-link" to="/contact">
+                      <NavLink className="nav-link" to="/portfolio/contact">
                         CONTACT ME
                       </NavLink>
                     </a>

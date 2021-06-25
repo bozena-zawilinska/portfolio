@@ -64,7 +64,7 @@ class Accessibility extends Component {
             <h2>Contact Me</h2>
             <p>
               If you wish to report an accessibility issue, have any questions
-              or need assistance, please <a href="/contact">contact me</a>.
+              or need assistance, please <a href="/portfolio/contact">contact me</a>.
             </p>
             <br />
             <br />

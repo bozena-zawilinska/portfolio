@@ -22,10 +22,10 @@ class Homepage extends Component {
         </div>
           <br />
         <div className="hero-video-btn">
-        <NavLink className="btn btn-outline-light m-4" to="/about">
+        <NavLink className="btn btn-outline-light m-4" to="/portfolio/about">
           ABOUT ME
         </NavLink>
-        <NavLink className="btn btn-outline-light m-4" to="/my-work">
+        <NavLink className="btn btn-outline-light m-4" to="/portfolio/my-work">
           MY WORK
         </NavLink>
         </div>
