@@ -2,9 +2,9 @@
   <div class="journey-visual">
     <div class="journey-badges">
       <div
-        class="journey-badge journey-badge--tech"
         v-for="(badge, index) in badges"
         :key="index"
+        class="journey-badge journey-badge--tech"
         :class="'journey-badge--' + badge.type"
       >
         <component :is="getIconComponent(badge.icon)" class="journey-icon" />

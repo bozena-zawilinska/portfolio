@@ -25,9 +25,9 @@
               class="header animated-heading"
               text="Hello, I'm Bozena!"
               :speed="80"
-              wrapperElement="h1"
-              customCursorClass="heading"
-              @typingFinished="onFirstAnimationFinished"
+              wrapper-element="h1"
+              custom-cursor-class="heading"
+              @typing-finished="onFirstAnimationFinished"
             />
             <p class="hero-subtitle section-description">
               A results-driven <strong>Front-End Developer</strong> crafting
@@ -138,7 +138,7 @@
               to="/contact"
               :icon-right="EnvelopeIcon"
               aria-label="Start a conversation about your project"
-              fullWidth
+              full-width
             >
               Let's Create Something Amazing Together
             </BaseButton>

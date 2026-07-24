@@ -3,7 +3,7 @@
     <a href="#main-content" class="skip-link">Skip to content</a>
     <SideNav
       :is-collapsed="isCollapsed"
-      @update:isCollapsed="isCollapsed = $event"
+      @update:is-collapsed="isCollapsed = $event"
     />
     <main
       id="main-content"
@@ -24,17 +24,17 @@ import { useViewportHeight } from './composables/useViewport'
 
 export default {
   components: { SideNav },
-  data() {
-    return {
-      isCollapsed: true,
-    }
-  },
   setup() {
     // Use the composable to fix viewport height on mobile
     const { setViewportHeight } = useViewportHeight()
 
     return {
       setViewportHeight,
+    }
+  },
+  data() {
+    return {
+      isCollapsed: true,
     }
   },
   mounted() {

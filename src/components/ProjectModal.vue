@@ -1,4 +1,7 @@
 <template>
+  <!-- Backdrop click-to-close is a mouse convenience; the close button
+  and Escape key already provide fully accessible alternatives. -->
+  <!-- eslint-disable-next-line vuejs-accessibility/no-static-element-interactions -->
   <div
     class="modal-overlay"
     role="dialog"
@@ -8,11 +11,11 @@
     @keydown.esc="$emit('close')"
     @click.self="$emit('close')"
   >
-    <div class="modal-content" ref="modalContent">
+    <div ref="modalContent" class="modal-content" tabindex="-1">
       <button
         class="modal-close"
-        @click="$emit('close')"
         aria-label="Close project details"
+        @click="$emit('close')"
       >
         &times;
       </button>
@@ -64,6 +67,7 @@ export default {
     project: { type: Object, required: true },
     getProjectPath: { type: Function, required: true },
   },
+  emits: ['close'],
   mounted() {
     this.$refs.modalContent.focus()
     document.body.style.overflow = 'hidden'

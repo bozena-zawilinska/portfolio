@@ -1,5 +1,5 @@
 <template>
-  <section class="cta-section" role="region" :aria-labelledby="headingId">
+  <section class="cta-section" :aria-labelledby="headingId">
     <!-- Minimal Floating Elements (matching homepage style) -->
     <div class="floating-elements" aria-hidden="true">
       <div class="floating-shape floating-shape--1"></div>

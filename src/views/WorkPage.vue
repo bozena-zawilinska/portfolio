@@ -9,13 +9,13 @@
         class="header animated-heading text--flex-center"
         text="My Work"
         :speed="80"
-        wrapperElement="h1"
-        customCursorClass="heading"
-        @typingFinished="onFirstAnimationFinished"
+        wrapper-element="h1"
+        custom-cursor-class="heading"
+        @typing-finished="onFirstAnimationFinished"
       />
 
       <!-- Developer Introduction -->
-      <UnifiedSection id="work-intro" mediaAlignment="center">
+      <UnifiedSection id="work-intro" media-alignment="center">
         <template #media>
           <img
             src="@/assets/avatar-bz-3.png"
@@ -61,7 +61,7 @@
         <h2 id="value-props-heading" class="section-title">
           My Professional Value
         </h2>
-        <InteractiveCards :customCards="workValueCards" />
+        <InteractiveCards :custom-cards="workValueCards" />
       </section>
 
       <!-- Featured Projects -->
@@ -75,7 +75,6 @@
             class="card featured-card"
             :class="{ 'is-expanded': project.showDetails }"
             :aria-expanded="project.showDetails"
-            role="article"
           >
             <header class="card__header">
               <h3 class="card__title">{{ project.title }}</h3>
@@ -90,7 +89,7 @@
             </header>
 
             <div class="card__content">
-              <h4 class="card__subtitle" role="text">{{ project.role }}</h4>
+              <h4 class="card__subtitle">{{ project.role }}</h4>
               <p class="card__description">
                 {{ project.summary }}
               </p>
@@ -102,10 +101,10 @@
             />
             <!-- Expandable details with smooth transitions -->
             <div
+              :id="'project-details-' + project.id"
               class="card__details"
               :class="{ show: project.showDetails }"
               :aria-expanded="project.showDetails"
-              :id="'project-details-' + project.id"
             >
               <div class="details__content">
                 <div class="details__text-content">
@@ -121,8 +120,8 @@
                 </div>
 
                 <div
-                  class="image-showcase"
                   v-if="project.images && project.images[0]"
+                  class="image-showcase"
                 >
                   <img
                     :src="getProjectPath(project.images[0].src)"
@@ -135,21 +134,20 @@
 
                 <!-- Skills badges -->
                 <div
-                  class="skill-badges"
                   v-if="project.skills"
+                  class="skill-badges"
                   role="list"
                   aria-label="Technologies used"
                 >
+                  <!-- Purely a cosmetic hover flourish; the skill name is
+                  always visible in the text, not gated behind interaction. -->
+                  <!-- eslint-disable-next-line vuejs-accessibility/no-static-element-interactions, vuejs-accessibility/mouse-events-have-key-events -->
                   <span
                     v-for="skill in project.skills"
                     :key="skill"
                     class="skill-badge"
                     role="listitem"
                     @mouseenter="animateSkill"
-                    @focus="animateSkill"
-                    @keydown="handleSkillKeydown"
-                    tabindex="0"
-                    :aria-label="`Technology: ${skill}`"
                   >
                     {{ skill }}
                   </span>
@@ -160,12 +158,12 @@
             <div class="card__actions">
               <BaseButton
                 variant="secondary"
-                @click="toggleDetails(project)"
                 :aria-expanded="project.showDetails"
                 :aria-controls="'project-details-' + project.id"
                 :aria-label="`${
                   project.showDetails ? 'Hide' : 'Show'
                 } details for ${project.title}`"
+                @click="toggleDetails(project)"
               >
                 <span class="button-text">{{
                   project.showDetails ? 'Show less' : 'Show more'
@@ -225,14 +223,16 @@
             :data-project-id="card.id"
             class="card project-card"
             :class="{ 'is-visible': card.isVisible }"
-            @click="openCardModal(card)"
-            @mouseenter="card.isHovered = true"
-            @mouseleave="card.isHovered = false"
-            @keydown.enter="openCardModal(card)"
-            @keydown.space.prevent="openCardModal(card)"
             tabindex="0"
             role="button"
             :aria-label="`${card.title} - Click to view details`"
+            @click="openCardModal(card, $event)"
+            @mouseenter="card.isHovered = true"
+            @mouseleave="card.isHovered = false"
+            @focus="card.isHovered = true"
+            @blur="card.isHovered = false"
+            @keydown.enter="openCardModal(card, $event)"
+            @keydown.space.prevent="openCardModal(card, $event)"
           >
             <div class="card__header">
               <h3 class="card__title">{{ card.title }}</h3>
@@ -263,21 +263,25 @@
         </div>
 
         <!-- Card Modal Overlay -->
+        <!-- Backdrop click-to-close is a mouse convenience; the close
+        button and Escape key already provide fully accessible alternatives. -->
+        <!-- eslint-disable-next-line vuejs-accessibility/no-static-element-interactions -->
         <div
           v-if="selectedCard"
+          ref="cardModalOverlay"
           class="card-modal-overlay"
-          @click="closeCardModal"
-          @keydown.escape="closeCardModal"
           tabindex="0"
           role="dialog"
           aria-modal="true"
           :aria-labelledby="`modal-title-${selectedCard.id}`"
+          @click="closeCardModal"
+          @keydown.escape="closeCardModal"
         >
           <div class="card-modal" @click.stop>
             <button
               class="modal__close"
-              @click="closeCardModal"
               aria-label="Close modal"
+              @click="closeCardModal"
             >
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path
@@ -962,14 +966,6 @@ export default {
       }, 200)
     },
 
-    // Add keyboard support for skill badges
-    handleSkillKeydown(event) {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault()
-        this.animateSkill(event)
-      }
-    },
-
     // Improve accessibility with focus management
     manageFocus(projectId, expanding) {
       this.$nextTick(() => {
@@ -986,7 +982,8 @@ export default {
       })
     },
 
-    openCardModal(card) {
+    openCardModal(card, event) {
+      this.cardModalTrigger = event?.currentTarget || null
       this.selectedCard = card
       // Prevent body scroll when modal is open
       document.body.style.overflow = 'hidden'
@@ -1002,6 +999,8 @@ export default {
       this.selectedCard = null
       // Restore body scroll
       document.body.style.overflow = ''
+      this.cardModalTrigger?.focus()
+      this.cardModalTrigger = null
     },
   },
 }

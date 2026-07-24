@@ -1,4 +1,8 @@
 <template>
+  <!-- role/tabindex are set dynamically from the `clickable` prop (see
+  handleClick below), so the linter can't see this is conditionally
+  interactive; keyboard handlers are already paired with the click handler. -->
+  <!-- eslint-disable-next-line vuejs-accessibility/no-static-element-interactions -->
   <div
     :class="[
       'base-card',
@@ -10,9 +14,15 @@
         'base-card--bordered': bordered,
       },
     ]"
+    :role="clickable ? 'button' : null"
+    :tabindex="clickable ? 0 : null"
     @click="handleClick"
+    @keydown.enter="handleClick"
+    @keydown.space.prevent="handleClick"
     @mouseenter="$emit('mouseenter')"
     @mouseleave="$emit('mouseleave')"
+    @focus="$emit('mouseenter')"
+    @blur="$emit('mouseleave')"
   >
     <!-- Header slot -->
     <div v-if="$slots.header" class="base-card__header">
@@ -77,6 +87,8 @@ export default {
       default: false,
     },
   },
+
+  emits: ['click', 'mouseenter', 'mouseleave'],
 
   methods: {
     handleClick(event) {

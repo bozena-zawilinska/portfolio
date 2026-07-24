@@ -1,7 +1,7 @@
 <template>
   <section
-    class="unified-section"
     :id="id"
+    class="unified-section"
     :class="[
       `unified-section--${variant}`,
       { 'unified-section--reversed': reverse },

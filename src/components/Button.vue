@@ -150,6 +150,8 @@ export default {
     },
   },
 
+  emits: ['click'],
+
   computed: {
     tag() {
       if (this.to) return 'router-link'

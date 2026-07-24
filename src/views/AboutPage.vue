@@ -1,13 +1,13 @@
 <template>
   <div>
     <PageLayout
-      pageClass="about"
-      pageTitle="My Story"
-      pageTagline="A journey of curiosity, creativity, and code"
-      @animationFinished="onFirstAnimationFinished"
+      page-class="about"
+      page-title="My Story"
+      page-tagline="A journey of curiosity, creativity, and code"
+      @animation-finished="onFirstAnimationFinished"
     >
       <!-- Hero Introduction -->
-      <UnifiedSection id="story-intro" mediaAlignment="center">
+      <UnifiedSection id="story-intro" media-alignment="center">
         <template #media>
           <img
             src="@/assets/avatar-bz-2.png"
@@ -107,9 +107,9 @@
         <div class="personal-grid-container">
           <div class="personal-grid card-grid card-grid--trio">
             <div
-              class="personal-item card-item card-item--left-aligned is-visible"
               v-for="(item, index) in personalItems"
               :key="index"
+              class="personal-item card-item card-item--left-aligned is-visible"
               :style="{ '--delay': `${index * 0.1}s` }"
             >
               <div class="personal-emoji">{{ item.emoji }}</div>

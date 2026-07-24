@@ -8,8 +8,8 @@
       {{ displayedText }}
     </component>
     <span
-      :class="['cursor', customCursorClass]"
       v-show="isTyping"
+      :class="['cursor', customCursorClass]"
       aria-hidden="true"
       >|</span
     >
@@ -55,6 +55,7 @@ export default {
       },
     },
   },
+  emits: ['typingFinished'],
   data() {
     return {
       displayedText: '',
