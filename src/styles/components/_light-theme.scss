@@ -64,7 +64,7 @@
       height: 60px;
       object-fit: contain;
       border-radius: 8px;
-      background: $background-secondary;
+      background: $background-primary;
       padding: 8px;
       transform: scale(1) rotate(0deg);
       transition: transform 0.3s ease;
@@ -148,11 +148,9 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      45deg,
-      transparent 70%,
-      rgba($primary-coral, 0.1)
-    );
+    background: linear-gradient(45deg,
+        transparent 70%,
+        rgba($primary-coral, 0.1));
     pointer-events: none;
   }
 }
@@ -253,10 +251,8 @@
   .intro-content {
     position: relative;
     z-index: 2; // Above the profile image
-    background: rgba(
-      $background-primary,
-      0.95
-    ); // Slight transparency for effect
+    background: rgba($background-primary,
+        0.95); // Slight transparency for effect
     border-radius: 12px;
     padding: 2rem;
     backdrop-filter: blur(10px); // Subtle glass effect
@@ -393,6 +389,7 @@
 
   // Enhanced accessibility
   &[aria-expanded='true'] {
+
     // Announce expansion to screen readers
     &::after {
       content: 'Expanded';
@@ -458,12 +455,10 @@
 
 .card__divider {
   height: 2px;
-  background: linear-gradient(
-    135deg,
-    $shadow-light 100%,
-    $shadow-strong 0%,
-    $shadow-light 100%
-  );
+  background: linear-gradient(135deg,
+      $shadow-light 100%,
+      $shadow-strong 0%,
+      $shadow-light 100%);
   // background: linear-gradient(to right, #ddd, #aaa, #ddd);
   margin: 1rem 0;
   border: none;

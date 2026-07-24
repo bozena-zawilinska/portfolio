@@ -668,20 +668,29 @@ export default {
         },
         {
           id: 11,
-          title: 'The Arete Club',
-          logo: 'arete/arete-website.png',
+          title: 'The Areté Club',
+          logo: 'arete/arete-logo.png',
           role: 'Founder & Website Developer',
           summary:
-            'My own side project - a club built to help ambitious people pursue excellence through community, accountability, and shared growth.',
+            'Designed, developed, and maintain a production website for my own brand, combining modern front-end development with accessibility, responsive design, performance, and SEO best practices.',
           showDetails: false,
           description:
-            "The Arete Club is my side hustle: a community platform I designed and built from the ground up, outside of client work, to bring together people who want to hold themselves to a higher standard - in their careers, habits, and personal growth.\n\nAs the sole developer, I own everything end-to-end: the design, the build, hosting, and ongoing iteration. It's my space to experiment with ideas I don't always get to try on client projects, while keeping performance and accessibility just as high a priority as I would for any paid engagement.\n\nBuilding something entirely my own, from concept to a live website real people use, has been one of the most rewarding projects I've taken on.",
+            "The Areté Club is a personal project that I designed and built from the ground up to support my own business. It gave me the opportunity to take ownership of every stage of the development process—from UX and visual design through to implementation, deployment, and continuous improvement.\n\nThe website is built with a strong focus on accessibility, responsive design, performance, maintainable architecture, and SEO. I created a reusable component system, implemented smooth interactions and animations, and ensured the site works consistently across desktop, tablet, and mobile devices.\n\nBeyond development, I continue to iterate on the platform using real user feedback, analytics, and SEO insights. The project demonstrates my ability to turn an idea into a polished, production-ready website while balancing technical quality with business goals.",
           link: 'https://www.theareteclub.com/',
-          skills: ['Vue.js', 'HTML & CSS', 'JavaScript', 'Responsive Design'],
+          skills: [
+            'React',
+            'JavaScript',
+            'HTML5',
+            'SCSS',
+            'Responsive Design',
+            'Accessibility (WCAG)',
+            'SEO',
+            'Performance Optimisation',
+          ],
           images: [
             {
               src: 'arete/arete-website.png',
-              alt: 'The Arete Club website',
+              alt: 'The Areté Club website',
             },
           ],
         },
@@ -1306,6 +1315,11 @@ export default {
       user-select: none;
       white-space: nowrap;
       flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      height: 2.125rem; // fixed height so oversized emoji glyphs can't inflate the badge
+      overflow: hidden; // clip oversized line-box some emoji glyphs force, keeping badge heights uniform
+      line-height: 1.2;
 
       &:hover,
       &:focus {

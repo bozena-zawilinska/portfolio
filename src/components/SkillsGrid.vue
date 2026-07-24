@@ -131,6 +131,7 @@ export default {
     margin-bottom: 0;
     white-space: nowrap;
     flex-shrink: 0;
+    line-height: 1.2;
     opacity: 0;
     transform: translateY(10px);
     animation: fadeInUp 0.4s ease-out forwards;
