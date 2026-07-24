@@ -243,27 +243,6 @@
               <span>GitHub</span>
             </a>
 
-            <a
-              href="https://x.com/BZawilinska"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-link twitter"
-              aria-label="Follow me on X (formerly Twitter)"
-              tabindex="0"
-            >
-              <svg
-                class="social-icon"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"
-                />
-              </svg>
-              <span>X (Twitter)</span>
-            </a>
-
             <button
               class="social-link email"
               type="button"
@@ -631,21 +610,22 @@ export default {
   }
 
   .social-links {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
 
-    @include breakpoint-up(md) {
-      grid-template-columns: repeat(2, 1fr);
+    @include breakpoint-up(lg) {
+      flex-direction: row;
+      flex-wrap: wrap;
     }
   }
 
   .social-link {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 1rem;
-    border-radius: 12px;
+    gap: 0.6rem;
+    padding: 0.6rem 0.9rem;
+    border-radius: 10px;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.2s ease;
@@ -655,14 +635,18 @@ export default {
     font-family: inherit;
     font-size: inherit;
 
+    @include breakpoint-up(lg) {
+      flex: 0 1 auto;
+    }
+
     .social-icon {
-      width: 24px;
-      height: 24px;
+      width: 18px;
+      height: 18px;
       flex-shrink: 0;
     }
 
     span {
-      font-size: 14px;
+      font-size: 13px;
     }
 
     &:hover {
@@ -696,18 +680,6 @@ export default {
 
       &:hover {
         background: linear-gradient(135deg, #24292e 0%, #333 100%);
-      }
-    }
-
-    &.twitter {
-      background: linear-gradient(135deg, #1da1f2 0%, #0d8bd9 100%);
-      color: $white;
-      span {
-        color: $white;
-      }
-
-      &:hover {
-        background: linear-gradient(135deg, #0d8bd9 0%, #1da1f2 100%);
       }
     }
 
