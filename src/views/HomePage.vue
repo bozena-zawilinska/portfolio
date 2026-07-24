@@ -92,6 +92,7 @@
       <!-- Floating Elements for Visual Interest -->
       <div class="floating-elements" aria-hidden="true">
         <div class="floating-shape floating-shape--1"></div>
+        <div class="floating-shape floating-shape--1b"></div>
         <div class="floating-shape floating-shape--2"></div>
         <div class="floating-shape floating-shape--3"></div>
       </div>
@@ -100,7 +101,7 @@
       <BackgroundShades
         primary-color="purple"
         secondary-color="coral"
-        tertiary-color="blue-bell"
+        tertiary-color="aqua"
         :show-tertiary="true"
         :animated="true"
       />

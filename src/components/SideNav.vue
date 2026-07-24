@@ -285,6 +285,17 @@ export default {
     .icon {
       margin-right: $space-2;
     }
+
+    @include breakpoint-up(md) {
+      ul {
+        .nav-item {
+          text-align: left;
+          a {
+            justify-content: flex-start;
+          }
+        }
+      }
+    }
   }
 
   // Navigation items

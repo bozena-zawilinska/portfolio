@@ -280,7 +280,7 @@
     <!-- Background shades for visual interest -->
     <BackgroundShades
       primary-color="purple"
-      secondary-color="blue"
+      secondary-color="aqua"
       tertiary-color="blue-bell"
       :show-tertiary="true"
     />
