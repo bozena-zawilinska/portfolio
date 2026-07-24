@@ -36,6 +36,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^9.32.0",
+    "eslint-plugin-vuejs-accessibility": "^2.5.0",
     "gh-pages": "^6.3.0",
     "prettier": "^2.4.1",
     "sass": "^1.32.7",
@@ -45,11 +46,13 @@
   "eslintConfig": {
     "root": true,
     "env": {
-      "node": true
+      "node": true,
+      "browser": true
     },
     "extends": [
-      "plugin:vue/vue3-essential",
+      "plugin:vue/vue3-recommended",
       "eslint:recommended",
+      "plugin:vuejs-accessibility/recommended",
       "plugin:prettier/recommended"
     ],
     "parserOptions": {
