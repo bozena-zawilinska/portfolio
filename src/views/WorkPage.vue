@@ -843,9 +843,6 @@ export default {
         // Handle smooth expansion/collapse
         this.$nextTick(() => {
           if (projectElement) {
-            const detailsElement =
-              projectElement.querySelector('.card__details')
-
             // If expanding and card is below viewport, scroll to keep it in view
             if (newState && projectTop < currentScrollY) {
               const offset = 100 // Add some breathing room
@@ -887,16 +884,7 @@ export default {
           showDetails: newState,
         }
 
-        // Debug: Check if the DOM classes are being applied
         this.$nextTick(() => {
-          const projectElement = this.$el.querySelector(
-            `[data-project-id="${id}"]`
-          )
-          if (projectElement) {
-            const overlayElement =
-              projectElement.querySelector('.card__overlay')
-          }
-
           // Reset toggle lock after animation completes
           setTimeout(() => {
             this.isToggling = false

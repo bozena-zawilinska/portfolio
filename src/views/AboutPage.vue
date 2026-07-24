@@ -164,7 +164,6 @@ import {
   CodeBracketIcon,
   WrenchIcon,
   ServerIcon,
-  ShieldCheckIcon,
   BoltIcon,
   PuzzlePieceIcon,
   ChartBarIcon,
