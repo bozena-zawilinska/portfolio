@@ -419,7 +419,10 @@
   display: block;
 }
 
-// Reduced motion preferences
+// Reduced motion preferences — single source of truth for the whole app.
+// Collapses animation/transition duration to near-zero rather than `none`,
+// so elements still settle at their end state (e.g. a fade-in still ends
+// visible) instead of getting stuck at their starting keyframe.
 @media (prefers-reduced-motion: reduce) {
   *,
   ::before,

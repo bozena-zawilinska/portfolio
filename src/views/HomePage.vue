@@ -10,7 +10,7 @@
       <div class="hero-container">
         <!-- Main Hero Content -->
         <div class="hero-content">
-          <div class="hero-image" data-aos="fade-up" data-aos-delay="200">
+          <div class="hero-image">
             <img
               src="@/assets/contact-bz.jpg"
               alt="Bozena - Front-End Developer"
@@ -19,7 +19,7 @@
             />
           </div>
 
-          <div class="hero-text" data-aos="fade-up" data-aos-delay="400">
+          <div class="hero-text">
             <TypingAnimation
               id="welcome-heading"
               class="header animated-heading"
@@ -39,7 +39,7 @@
             </p>
 
             <!-- CTA Buttons -->
-            <div class="hero-actions" data-aos="fade-up" data-aos-delay="600">
+            <div class="hero-actions">
               <BaseButton
                 variant="primary"
                 size="large"
@@ -64,7 +64,7 @@
         </div>
 
         <!-- Scroll Indicator -->
-        <div class="scroll-indicator" data-aos="fade-in" data-aos-delay="800">
+        <div class="scroll-indicator">
           <a
             href="#portfolio"
             class="scroll-arrow"
@@ -151,7 +151,7 @@
 
         <!-- Key Features Grid -->
         <div class="features-grid">
-          <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="feature-card">
             <div class="feature-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path
@@ -166,7 +166,7 @@
             <p>Optimized for performance with 95+ PageSpeed scores</p>
           </div>
 
-          <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="feature-card">
             <div class="feature-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path
@@ -181,7 +181,7 @@
             <p>Perfect experience across all devices and screen sizes</p>
           </div>
 
-          <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="feature-card">
             <div class="feature-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path
@@ -235,7 +235,6 @@ export default {
   mounted() {
     document.documentElement.style.scrollBehavior = 'smooth'
     this.initScrollListener()
-    this.initFloatingAnimations()
     window.addEventListener('scroll', this.handleScroll)
   },
   beforeUnmount() {
@@ -261,21 +260,6 @@ export default {
       this.scrollProgress = (scrollTop / documentHeight) * 100
 
       this.isScrolled = window.scrollY > 50
-    },
-
-    initFloatingAnimations() {
-      // Add subtle floating animations to shapes
-      const shapes = document.querySelectorAll('.floating-shape')
-      shapes.forEach((shape, index) => {
-        const duration = 3000 + index * 1000 // Different durations for each shape
-        const distance = 20 + index * 10 // Different distances
-
-        setInterval(() => {
-          shape.style.transform = `translateY(${
-            Math.sin(Date.now() / duration) * distance
-          }px) rotate(${Math.sin(Date.now() / (duration * 2)) * 15}deg)`
-        }, 16) // ~60fps
-      })
     },
 
     onFirstAnimationFinished() {
@@ -487,22 +471,6 @@ export default {
     opacity: 0.1;
     z-index: 0;
     pointer-events: none;
-  }
-}
-
-// Accessibility improvements
-@media (prefers-reduced-motion: reduce) {
-  .floating-shape,
-  .scroll-icon,
-  .hero-image img {
-    animation: none !important;
-  }
-
-  .hero-subtitle,
-  .hero-actions {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
   }
 }
 

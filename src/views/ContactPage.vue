@@ -9,9 +9,9 @@
             class="header animated-heading text--flex-center"
             text="Let's work together!"
             :speed="80"
-            wrapperElement="h1"
-            customCursorClass="heading"
-            @typingFinished="onFirstAnimationFinished"
+            wrapper-element="h1"
+            custom-cursor-class="heading"
+            @typing-finished="onFirstAnimationFinished"
           />
           <p class="intro-text" :class="{ 'is-animated': animationComplete }">
             Have an exciting project or idea? Let’s collaborate to create
@@ -43,17 +43,17 @@
         <!-- Contact Form (hidden after successful submission) -->
         <form
           v-else
-          @submit.prevent="submitForm"
           class="contact-form"
           :class="{ 'is-animated': animationComplete }"
           novalidate
+          @submit.prevent="submitForm"
         >
           <div class="form-group">
             <label for="name">Your Name *</label>
             <input
-              type="text"
               id="name"
               v-model="form.name"
+              type="text"
               :disabled="isSubmitting"
               :aria-describedby="
                 validationErrors.name
@@ -71,8 +71,8 @@
             />
             <div
               v-if="validationErrors.name"
-              class="field-error"
               id="name-error"
+              class="field-error"
               role="alert"
             >
               {{ validationErrors.name }}
@@ -82,9 +82,9 @@
           <div class="form-group">
             <label for="email">Your Email *</label>
             <input
-              type="email"
               id="email"
               v-model="form.email"
+              type="email"
               :disabled="isSubmitting"
               :aria-describedby="
                 validationErrors.email
@@ -102,8 +102,8 @@
             />
             <div
               v-if="validationErrors.email"
-              class="field-error"
               id="email-error"
+              class="field-error"
               role="alert"
             >
               {{ validationErrors.email }}
@@ -113,9 +113,9 @@
           <div class="form-group">
             <label for="subject">Subject *</label>
             <input
-              type="text"
               id="subject"
               v-model="form.subject"
+              type="text"
               :disabled="isSubmitting"
               :aria-describedby="
                 validationErrors.subject
@@ -133,8 +133,8 @@
             />
             <div
               v-if="validationErrors.subject"
-              class="field-error"
               id="subject-error"
+              class="field-error"
               role="alert"
             >
               {{ validationErrors.subject }}
@@ -164,8 +164,8 @@
             ></textarea>
             <div
               v-if="validationErrors.message"
-              class="field-error"
               id="message-error"
+              class="field-error"
               role="alert"
             >
               {{ validationErrors.message }}
@@ -185,10 +185,10 @@
 
           <div
             v-if="hasError"
+            id="form-error"
             class="error-message"
             role="alert"
             aria-live="assertive"
-            id="form-error"
           >
             Sorry, there was an error sending your message. Please check your
             information and try again.
@@ -266,9 +266,9 @@
 
             <button
               class="social-link email"
-              @click="sendEmail"
               type="button"
               aria-label="Send me an email"
+              @click="sendEmail"
             >
               <EnvelopeIcon class="social-icon" aria-hidden="true" />
               <span>Email</span>
@@ -279,8 +279,10 @@
     </div>
     <!-- Background shades for visual interest -->
     <BackgroundShades
-      :colors="['lavender', 'wisteria', 'blue-bell']"
-      :positions="['primary', 'secondary', 'tertiary']"
+      primary-color="purple"
+      secondary-color="blue"
+      tertiary-color="blue-bell"
+      :show-tertiary="true"
     />
 
     <!-- Scroll to top button -->
@@ -858,15 +860,6 @@ form {
   }
   90% {
     transform: translate3d(0, -4px, 0);
-  }
-}
-
-// Reduced motion support
-@media (prefers-reduced-motion: reduce) {
-  .animated-social-item {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: translateY(0) !important;
   }
 }
 </style>
