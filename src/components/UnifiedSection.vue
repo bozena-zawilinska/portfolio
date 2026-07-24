@@ -166,6 +166,8 @@ export default {
   // Section media
   .section-media {
     display: flex;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out 0.4s forwards;
     @include breakpoint-up(md) {
       flex: 1;
     }
