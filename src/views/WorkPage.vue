@@ -69,7 +69,7 @@
         <h2 id="featured-projects" class="section-title">Featured Projects</h2>
         <div class="featured-projects-grid">
           <article
-            v-for="project in projects.slice(0, 4)"
+            v-for="project in projects.slice(0, 5)"
             :key="project.id"
             :data-project-id="project.id"
             class="card featured-card"
@@ -276,6 +276,7 @@
           :aria-labelledby="`modal-title-${selectedCard.id}`"
           @click="closeCardModal"
           @keydown.escape="closeCardModal"
+          @keydown.tab="onCardModalTabKeydown"
         >
           <div class="card-modal" @click.stop>
             <button
@@ -379,6 +380,9 @@ import TypingAnimation from '@/components/TypingAnimation.vue'
 import ProgressBar from '@/components/ProgressBar.vue'
 import InteractiveCards from '@/components/InteractiveCards.vue'
 import UnifiedSection from '@/components/UnifiedSection.vue'
+import { useFocusTrap } from '@/composables/useFocusTrap'
+
+const { trapFocus } = useFocusTrap()
 
 export default {
   name: 'WorkPage',
@@ -659,6 +663,25 @@ export default {
             {
               src: 'nhs/nhs-website-children.png',
               alt: 'Royal Hospital for Children and Young People',
+            },
+          ],
+        },
+        {
+          id: 11,
+          title: 'The Arete Club',
+          logo: 'arete/arete-website.png',
+          role: 'Founder & Website Developer',
+          summary:
+            'My own side project - a club built to help ambitious people pursue excellence through community, accountability, and shared growth.',
+          showDetails: false,
+          description:
+            "The Arete Club is my side hustle: a community platform I designed and built from the ground up, outside of client work, to bring together people who want to hold themselves to a higher standard - in their careers, habits, and personal growth.\n\nAs the sole developer, I own everything end-to-end: the design, the build, hosting, and ongoing iteration. It's my space to experiment with ideas I don't always get to try on client projects, while keeping performance and accessibility just as high a priority as I would for any paid engagement.\n\nBuilding something entirely my own, from concept to a live website real people use, has been one of the most rewarding projects I've taken on.",
+          link: 'https://www.theareteclub.com/',
+          skills: ['Vue.js', 'HTML & CSS', 'JavaScript', 'Responsive Design'],
+          images: [
+            {
+              src: 'arete/arete-website.png',
+              alt: 'The Arete Club website',
             },
           ],
         },
@@ -1002,6 +1025,10 @@ export default {
       this.cardModalTrigger?.focus()
       this.cardModalTrigger = null
     },
+
+    onCardModalTabKeydown(event) {
+      trapFocus(this.$refs.cardModalOverlay, event)
+    },
   },
 }
 </script>
@@ -1277,6 +1304,8 @@ export default {
       cursor: pointer;
       transition: all 0.3s ease;
       user-select: none;
+      white-space: nowrap;
+      flex-shrink: 0;
 
       &:hover,
       &:focus {

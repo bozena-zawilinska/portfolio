@@ -12,6 +12,7 @@
     tabindex="0"
     @click="closeModal"
     @keydown.escape="closeModal"
+    @keydown.tab="onTabKeydown"
   >
     <div class="card-modal" @click.stop>
       <button class="modal__close" aria-label="Close modal" @click="closeModal">
@@ -65,6 +66,9 @@ import {
   BoltIcon,
   UsersIcon,
 } from '@heroicons/vue/24/outline'
+import { useFocusTrap } from '@/composables/useFocusTrap'
+
+const { trapFocus } = useFocusTrap()
 
 export default {
   name: 'CardModal',
@@ -105,6 +109,9 @@ export default {
       // Restore body scroll
       document.body.style.overflow = ''
       this.$emit('close')
+    },
+    onTabKeydown(event) {
+      trapFocus(this.$refs.overlay, event)
     },
     handleGlobalKeydown(event) {
       // Close modal on Escape key
