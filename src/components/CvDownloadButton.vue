@@ -5,7 +5,7 @@
     :variant="variant"
     :size="size"
     :full-width="fullWidth"
-    :icon-left="ArrowDownTrayIcon"
+    :icon-right="ArrowDownTrayIcon"
     :aria-label="ariaLabel"
     v-bind="$attrs"
   >

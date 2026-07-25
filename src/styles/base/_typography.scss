@@ -29,7 +29,6 @@ h6,
   font-family: 'Lato', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.2rem;
   margin: 0 0 $space-3 0;
   line-height: 1.2;
   max-width: 100%; // Prevent overflow
@@ -39,6 +38,33 @@ h6,
   &:last-child {
     margin-bottom: 0;
   }
+}
+
+// Letter-spacing refined by heading role (em, not rem, so it scales with
+// each heading's own font-size) rather than one blanket value for all sizes.
+// Note: .display-heading further down this file sets its own tighter
+// letter-spacing (-0.02em) and takes precedence for that class.
+h1 {
+  letter-spacing: 0.06em;
+}
+
+h2 {
+  letter-spacing: 0.075em;
+}
+
+h3 {
+  letter-spacing: 0.055em;
+}
+
+h4,
+h5,
+h6 {
+  letter-spacing: 0.04em;
+}
+
+.heading,
+.subheading {
+  letter-spacing: 0.06em;
 }
 
 // Fluid heading sizes using clamp (min, preferred, max)
@@ -103,6 +129,18 @@ p.text--supporting,
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 0.05em;
+}
+
+// Editorial eyebrow label (e.g. "Front-End Engineer", "Selected Work")
+.eyebrow {
+  margin: 0 0 0.75rem;
+  color: $text-muted-label;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
 }
 
 // Hero text for large display elements
