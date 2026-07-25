@@ -153,6 +153,22 @@
 
       <!-- Working Philosophy section - removed -->
 
+      <!-- Download CV -->
+      <UnifiedSection
+        id="download-cv"
+        title="Full Professional Profile"
+        variant="highlight"
+      >
+        <p>
+          Interested in the full details of my experience, technical background
+          and training?
+        </p>
+
+        <template #actions>
+          <CvDownloadButton />
+        </template>
+      </UnifiedSection>
+
       <!-- Call to Action -->
       <CallToAction
         heading="Let's Connect"
@@ -199,6 +215,7 @@ import {
 } from '@heroicons/vue/24/outline'
 import PageLayout from '@/components/PageLayout.vue'
 import BaseButton from '@/components/Button.vue'
+import CvDownloadButton from '@/components/CvDownloadButton.vue'
 import CallToAction from '@/components/CallToAction.vue'
 import UnifiedSection from '@/components/UnifiedSection.vue'
 // import JourneyTimeline from '@/components/JourneyTimeline.vue'
@@ -212,6 +229,7 @@ export default {
     PageLayout,
     UnifiedSection,
     BaseButton,
+    CvDownloadButton,
     CallToAction,
     // JourneyTimeline,
     SkillsGrid,

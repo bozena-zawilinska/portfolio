@@ -50,15 +50,7 @@
               >
                 Showcase Portfolio
               </BaseButton>
-              <BaseButton
-                variant="secondary"
-                size="large"
-                to="/about"
-                :icon-right="BookOpenIcon"
-                aria-label="Learn more about my skills and experience"
-              >
-                Discover My Story
-              </BaseButton>
+              <CvDownloadButton variant="secondary" size="large" />
             </div>
           </div>
         </div>
@@ -206,13 +198,10 @@
 import TypingAnimation from '@/components/TypingAnimation.vue'
 import GutenbergVideo from '@/components/GutenbergVideo.vue'
 import BaseButton from '@/components/Button.vue'
+import CvDownloadButton from '@/components/CvDownloadButton.vue'
 import BackgroundShades from '@/components/BackgroundShades.vue'
 import ProgressBar from '@/components/ProgressBar.vue'
-import {
-  ArrowRightIcon,
-  EnvelopeIcon,
-  BookOpenIcon,
-} from '@heroicons/vue/24/outline'
+import { ArrowRightIcon, EnvelopeIcon } from '@heroicons/vue/24/outline'
 
 export default {
   name: 'HomePage',
@@ -220,6 +209,7 @@ export default {
     TypingAnimation,
     GutenbergVideo,
     BaseButton,
+    CvDownloadButton,
     BackgroundShades,
     ProgressBar,
   },
@@ -230,13 +220,11 @@ export default {
       scrollProgress: 0,
       ArrowRightIcon, // Make icons available in template
       EnvelopeIcon,
-      BookOpenIcon,
     }
   },
   mounted() {
     document.documentElement.style.scrollBehavior = 'smooth'
     this.initScrollListener()
-    window.addEventListener('scroll', this.handleScroll)
   },
   beforeUnmount() {
     window.removeEventListener('scroll', this.handleScroll)
