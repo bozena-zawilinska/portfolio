@@ -11,14 +11,16 @@
           `interactive-card--${card.type}`,
           { 'is-hovered': card.isHovered },
         ]"
-        @mouseenter="card.isHovered = true"
-        @mouseleave="card.isHovered = false"
-        @click="openCardModal(card)"
         role="button"
         tabindex="0"
         :aria-label="`Open details for ${card.title}`"
-        @keydown.enter="openCardModal(card)"
-        @keydown.space.prevent="openCardModal(card)"
+        @mouseenter="card.isHovered = true"
+        @mouseleave="card.isHovered = false"
+        @focus="card.isHovered = true"
+        @blur="card.isHovered = false"
+        @click="openCardModal(card, $event)"
+        @keydown.enter="openCardModal(card, $event)"
+        @keydown.space.prevent="openCardModal(card, $event)"
       >
         <div class="card__icon-container">
           <component :is="getIconComponent(card.icon)" class="card__icon" />
@@ -27,7 +29,7 @@
       </div>
     </div>
 
-    <CardModal :selectedCard="selectedCard" @close="closeCardModal" />
+    <CardModal :selected-card="selectedCard" @close="closeCardModal" />
   </div>
 </template>
 
@@ -136,11 +138,14 @@ export default {
     },
   },
   methods: {
-    openCardModal(card) {
+    openCardModal(card, event) {
+      this.triggerElement = event?.currentTarget || null
       this.selectedCard = card
     },
     closeCardModal() {
       this.selectedCard = null
+      this.triggerElement?.focus()
+      this.triggerElement = null
     },
     getIconComponent(iconName) {
       // Convert string icon name to component reference

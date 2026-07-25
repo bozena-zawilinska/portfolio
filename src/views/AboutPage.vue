@@ -1,13 +1,13 @@
 <template>
   <div>
     <PageLayout
-      pageClass="about"
-      pageTitle="My Story"
-      pageTagline="A journey of curiosity, creativity, and code"
-      @animationFinished="onFirstAnimationFinished"
+      page-class="about"
+      page-title="My Story"
+      page-tagline="A journey of curiosity, creativity, and code"
+      @animation-finished="onFirstAnimationFinished"
     >
       <!-- Hero Introduction -->
-      <UnifiedSection id="story-intro" mediaAlignment="center">
+      <UnifiedSection id="story-intro" media-alignment="center">
         <template #media>
           <img
             src="@/assets/avatar-bz-2.png"
@@ -107,9 +107,9 @@
         <div class="personal-grid-container">
           <div class="personal-grid card-grid card-grid--trio">
             <div
-              class="personal-item card-item card-item--left-aligned is-visible"
               v-for="(item, index) in personalItems"
               :key="index"
+              class="personal-item card-item card-item--left-aligned is-visible"
               :style="{ '--delay': `${index * 0.1}s` }"
             >
               <div class="personal-emoji">{{ item.emoji }}</div>
@@ -164,7 +164,6 @@ import {
   CodeBracketIcon,
   WrenchIcon,
   ServerIcon,
-  ShieldCheckIcon,
   BoltIcon,
   PuzzlePieceIcon,
   ChartBarIcon,
@@ -337,37 +336,37 @@ export default {
           emoji: '🌱',
           title: 'Gardening',
           description:
-            'Nothing beats the satisfaction of growing something from seed to harvest. My garden is my zen space where I cultivate both plants and patience.',
+            'Growing plants from seed has taught me patience, consistency, and the satisfaction of seeing small daily efforts turn into something meaningful.',
         },
         {
           emoji: '💪',
           title: 'Fitness',
           description:
-            "Exercise is my daily energy boost! Whether it's a Les Mills class at home or cycling through the Scottish countryside, staying active keeps my mind sharp and ready for coding challenges.",
+            "Whether it's a Les Mills workout or a cycle through the Scottish countryside, staying active helps me clear my mind and return to problems with fresh energy.",
         },
         {
           emoji: '🐕',
           title: 'Adventures with Summer',
           description:
-            'My dog Summer is my adventure companion. We love exploring new trails and discovering hidden corners of Scotland together, which often leads to my best creative thinking.',
+            'My dog Summer is my favourite adventure companion. Exploring new trails together is the perfect way to switch off from the screen and recharge.',
         },
         {
           emoji: '🏞️',
           title: 'Nature Escapes',
           description:
-            'Living in Scotland means having endless breathtaking landscapes at our doorstep. Exploring the Highlands helps me disconnect from technology and return with fresh perspectives.',
+            "Scotland's landscapes never get old. Spending time outdoors helps me slow down, think more clearly, and come back to my work with a fresh perspective.",
         },
         {
           emoji: '👨‍🍳',
           title: 'Home Cooking',
           description:
-            "My husband and I love creating delicious meals together. There's something about the creativity of cooking that parallels good coding—combining ingredients in just the right way to create something wonderful!",
+            "Cooking is something my husband and I genuinely enjoy doing together. It's one of the ways we slow down, spend quality time together, and end the day well.",
         },
         {
-          emoji: '📚',
-          title: 'Continuous Learning',
+          emoji: '🧠',
+          title: 'Psychology & Personal Growth',
           description:
-            "I'm always reading something—from tech blogs to novels. I believe that learning across diverse fields makes me a better developer by expanding my thinking beyond code.",
+            'Outside of tech, I enjoy reading about psychology, communication, mindfulness, health, and personal growth. Understanding how people think helps me design more thoughtful user experiences and collaborate better with teams.',
         },
       ],
     }

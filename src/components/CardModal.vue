@@ -1,16 +1,21 @@
 <template>
+  <!-- Backdrop click-to-close is a mouse convenience; the close button
+  and Escape key already provide fully accessible alternatives. -->
+  <!-- eslint-disable-next-line vuejs-accessibility/no-static-element-interactions -->
   <div
     v-if="selectedCard"
+    ref="overlay"
     class="card-modal-overlay"
-    @click="closeModal"
-    @keydown.escape="closeModal"
-    tabindex="0"
     role="dialog"
     aria-modal="true"
     :aria-labelledby="`modal-title-${selectedCard.id}`"
+    tabindex="0"
+    @click="closeModal"
+    @keydown.escape="closeModal"
+    @keydown.tab="onTabKeydown"
   >
     <div class="card-modal" @click.stop>
-      <button class="modal__close" @click="closeModal" aria-label="Close modal">
+      <button class="modal__close" aria-label="Close modal" @click="closeModal">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
           <path
             stroke-linecap="round"
@@ -61,6 +66,9 @@ import {
   BoltIcon,
   UsersIcon,
 } from '@heroicons/vue/24/outline'
+import { useFocusTrap } from '@/composables/useFocusTrap'
+
+const { trapFocus } = useFocusTrap()
 
 export default {
   name: 'CardModal',
@@ -78,13 +86,18 @@ export default {
       default: null,
     },
   },
+  emits: ['close'],
+  watch: {
+    selectedCard(card) {
+      document.body.style.overflow = card ? 'hidden' : ''
+      if (card) {
+        this.$nextTick(() => this.$refs.overlay?.focus())
+      }
+    },
+  },
   mounted() {
     // Add global keyboard listener for modal
     document.addEventListener('keydown', this.handleGlobalKeydown)
-    if (this.selectedCard) {
-      // Prevent body scroll when modal is open
-      document.body.style.overflow = 'hidden'
-    }
   },
   beforeUnmount() {
     document.removeEventListener('keydown', this.handleGlobalKeydown)
@@ -96,6 +109,9 @@ export default {
       // Restore body scroll
       document.body.style.overflow = ''
       this.$emit('close')
+    },
+    onTabKeydown(event) {
+      trapFocus(this.$refs.overlay, event)
     },
     handleGlobalKeydown(event) {
       // Close modal on Escape key

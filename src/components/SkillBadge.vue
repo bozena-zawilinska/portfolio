@@ -1,8 +1,13 @@
 <template>
   <span
     class="skill-badge"
+    role="button"
+    tabindex="0"
     @mouseenter="animateSkill"
+    @focus="animateSkill"
     @click="$emit('click', skill)"
+    @keydown.enter="$emit('click', skill)"
+    @keydown.space.prevent="$emit('click', skill)"
   >
     {{ skill }}
   </span>

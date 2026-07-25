@@ -8,6 +8,10 @@ $primary-peach: #ffc39e;
 $primary-purple: #b5a0d8;
 $primary-blue: #a0a7d8;
 
+// Water/molecule accent layer colors
+$primary-aqua: #7dd3c8;
+$primary-deep-blue: #6b8fd8;
+
 // Light Theme Base Colors
 $background-primary: #ffffff;
 $background-secondary: #fafcfc;
@@ -21,7 +25,7 @@ $text-tertiary: #6b7280; // Light gray for tertiary text (contrast ratio: 5.74:1
 $text-inverse: #ffffff; // White text for dark backgrounds
 
 // Interactive Colors
-$interactive-primary: #1772f3; // Primary blue for links and buttons (contrast ratio: 4.5:1)
+$interactive-primary: #1568e0; // Primary blue for links and buttons (contrast ratio: 5.14:1 on white)
 $interactive-hover: #155ab6; // Darker blue for hover states
 $interactive-active: #0f4d8b; // Even darker blue for active states
 
@@ -31,27 +35,33 @@ $surface-secondary: rgba(248, 250, 252, 0.9);
 $surface-glass: rgba(255, 255, 255, 0.25);
 $surface-border: rgba(229, 231, 235, 0.6);
 
+// Translucency scale — named glass levels for the water/droplet motif
+$glass-subtle: rgba(255, 255, 255, 0.15);
+$glass-medium: $surface-glass;
+$glass-strong: rgba(255, 255, 255, 0.4);
+$glass-border: rgba(255, 255, 255, 0.5);
+
 // Accent Gradients
-$gradient-hero: linear-gradient(
-  to bottom left,
-  $primary-coral 40%,
-  $primary-peach 100%
-);
-$gradient-purple: linear-gradient(
-  135deg,
-  $primary-purple 0%,
-  rgba($primary-purple, 0.3) 100%
-);
-$gradient-blue: linear-gradient(
-  135deg,
-  $primary-blue 0%,
-  rgba($primary-blue, 0.3) 100%
-);
-$gradient-coral: linear-gradient(
-  135deg,
-  $primary-coral 0%,
-  rgba($primary-coral, 0.3) 100%
-);
+$gradient-hero: linear-gradient(to bottom left,
+    $primary-coral 40%,
+    $primary-peach 100%);
+$gradient-purple: linear-gradient(135deg,
+    $primary-purple 0%,
+    rgba($primary-purple, 0.3) 100%);
+$gradient-blue: linear-gradient(135deg,
+    $primary-blue 0%,
+    rgba($primary-blue, 0.3) 100%);
+$gradient-coral: linear-gradient(135deg,
+    $primary-coral 0%,
+    rgba($primary-coral, 0.3) 100%);
+$gradient-water: linear-gradient(135deg,
+    $primary-aqua 0%,
+    $primary-blue 60%,
+    $primary-purple 100%);
+$gradient-droplet: radial-gradient(circle at 30% 30%,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba($primary-aqua, 0.3) 40%,
+    rgba($primary-blue, 0.15) 100%);
 
 // Status Colors (WCAG Compliant)
 $status-success: #059669; // Green
@@ -109,30 +119,22 @@ $dark-gunmetal: #333e61; // Used for side nav background and tooltip text
 
 // Light Theme Gradients
 $red-background: $gradient-hero; // Updated to match your hero gradient
-$green-background: linear-gradient(
-  to bottom right,
-  $soft-green 40%,
-  $soft-cyan 100%
-);
+$green-background: linear-gradient(to bottom right,
+    $soft-green 40%,
+    $soft-cyan 100%);
 $blue-background: $gradient-blue;
 $purple-background: $gradient-purple;
 
 // Additional Light Theme Gradients
-$gradient-soft-background: linear-gradient(
-  135deg,
-  $background-primary 0%,
-  $background-secondary 100%
-);
-$gradient-card: linear-gradient(
-  135deg,
-  $surface-primary 0%,
-  $surface-secondary 100%
-);
-$gradient-accent-light: linear-gradient(
-  135deg,
-  rgba($primary-coral, 0.1) 0%,
-  rgba($primary-peach, 0.1) 100%
-);
+$gradient-soft-background: linear-gradient(135deg,
+    $background-primary 0%,
+    $background-secondary 100%);
+$gradient-card: linear-gradient(135deg,
+    $surface-primary 0%,
+    $surface-secondary 100%);
+$gradient-accent-light: linear-gradient(135deg,
+    rgba($primary-coral, 0.1) 0%,
+    rgba($primary-peach, 0.1) 100%);
 
 // Font Sizes
 $font-size-small: 0.833rem;

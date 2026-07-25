@@ -34,7 +34,6 @@ h6,
   line-height: 1.2;
   max-width: 100%; // Prevent overflow
   overflow-wrap: break-word;
-  hyphens: auto;
 
   &:last-child {
     margin-bottom: 0;
@@ -276,13 +275,5 @@ ul.no-markers {
 @include breakpoint-down(md) {
   .text--md-center {
     text-align: center;
-  }
-}
-
-// Reduced motion
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
   }
 }
