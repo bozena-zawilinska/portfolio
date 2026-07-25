@@ -263,27 +263,27 @@ export default {
 // Type-specific styling
 .interactive-card {
   &--code:before {
-    background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+    background: $gradient-icon-blue;
   }
 
   &--problem:before {
-    background: linear-gradient(90deg, #8b5cf6, #6d28d9);
+    background: $gradient-icon-purple;
   }
 
   &--passion:before {
-    background: linear-gradient(90deg, #ec4899, #be185d);
+    background: $gradient-icon-coral;
   }
 
   &--innovation:before {
-    background: linear-gradient(90deg, #f59e0b, #d97706);
+    background: $gradient-icon-peach;
   }
 
   &--performance:before {
-    background: linear-gradient(90deg, #10b981, #059669);
+    background: $gradient-icon-aqua;
   }
 
   &--collaboration:before {
-    background: linear-gradient(90deg, #6366f1, #4f46e5);
+    background: $gradient-icon-deep-blue;
   }
 }
 </style>

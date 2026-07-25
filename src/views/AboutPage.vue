@@ -20,26 +20,27 @@
 
         <h2 class="visually-hidden">Introduction</h2>
         <p>
-          Welcome to my digital corner! I'm <strong>Bozena</strong>, a
-          passionate Front-End Developer with a mission to make the web more
-          beautiful, accessible, and performant one project at a time.
+          I'm <strong>Bozena</strong>, a Front-End Developer who builds fast,
+          accessible, and maintainable websites and web applications. I care
+          about thoughtful user experiences, clear code, and making complex
+          requirements feel simple.
         </p>
 
         <p>
           My journey into web development began with a simple question:
-          <em>"How do these websites actually work?"</em> That curiosity sparked
-          a deep passion that has evolved into a career creating impactful
-          digital experiences that solve real problems for businesses and users
-          alike.
+          <em>"How do these websites actually work?"</em> That curiosity grew
+          into a career focused on turning ideas and designs into reliable
+          digital products that work well for both users and the teams who
+          maintain them.
         </p>
 
         <p>
-          I believe the best digital products emerge when
+          I enjoy working where
           <span class="highlight"
-            >technical excellence meets thoughtful design</span
-          >. I specialize in crafting websites and web applications that not
-          only look stunning but also deliver exceptional performance,
-          accessibility, and user experience.
+            >thoughtful design meets practical engineering</span
+          >—building reusable components, improving accessibility, solving
+          front-end problems, and refining the details that make a product
+          easier to use.
         </p>
       </UnifiedSection>
 
@@ -52,28 +53,38 @@
         <div class="journey-intro">
           <div class="journey-text">
             <p>
-              With over <strong>5 years of professional experience</strong>,
-              I've had the opportunity to work with diverse companies ranging
-              from startups to established businesses, helping them transform
-              their digital presence and create exceptional experiences for
-              their users.
+              Over the past <strong>five years</strong>, I've built accessible,
+              high-performance digital products for SaaS companies, marketing
+              teams, charities, and businesses. My work spans customer-facing
+              applications, marketing websites, design systems, and
+              content-managed platforms.
             </p>
 
             <p>
-              Throughout my career, I've specialized in
-              <span class="highlight">front-end development</span>, particularly
-              in Vue.js, and WordPress. I've built everything from
-              high-converting landing pages to complex web applications and
-              custom Gutenberg blocks that empower marketing teams to manage
-              content effortlessly.
+              I specialise in modern front-end development using
+              <span class="highlight">
+                Vue.js, JavaScript, SCSS, and WordPress
+              </span>
+              . I've developed reusable component libraries, implemented complex
+              product features, improved accessibility across existing
+              applications, and built custom Gutenberg blocks that enable
+              non-technical teams to create and manage content independently.
             </p>
 
             <p>
-              What sets me apart is my commitment to delivering solutions that
-              not only look great but also achieve tangible business outcomes.
-              Whether it's improving conversion rates, enhancing user
-              engagement, or optimizing performance scores, I focus on results
-              that matter.
+              I enjoy taking ideas from concept to release, working closely with
+              designers, product managers, backend developers, and fellow
+              front-end engineers throughout the development process. Whether
+              I'm building new features, improving performance, fixing complex
+              interface issues, or documenting systems for future developers, I
+              focus on writing clean, maintainable code that solves real user
+              problems.
+            </p>
+
+            <p>
+              For me, accessibility, performance, and maintainability aren't
+              separate tasks—they're part of every feature from the first line
+              of code.
             </p>
           </div>
 
@@ -86,13 +97,31 @@
       <!-- Skills and Expertise -->
       <UnifiedSection id="story-skills" title="Skills & Expertise">
         <p>
-          My approach combines technical expertise with a deep understanding of
-          user experience principles. I specialize in creating websites that are
-          not only visually appealing but also fast, accessible, and easy to
-          maintain.
+          My core strength is translating product and design requirements into
+          responsive, accessible interfaces that are reliable in production and
+          straightforward for other developers to understand and extend.
         </p>
 
         <SkillsGrid :categories="skillCategories" />
+      </UnifiedSection>
+
+      <!-- How I Work -->
+      <UnifiedSection id="story-working-style" title="How I Work">
+        <div class="working-style">
+          <p>
+            I enjoy collaborating early, asking clear questions, and breaking
+            larger problems into manageable steps. I document important
+            decisions, value constructive code reviews, and aim to leave the
+            codebase easier to work with than I found it.
+          </p>
+
+          <p>
+            I'm particularly attentive to accessibility, reusable architecture,
+            edge cases, and the connection between front-end behaviour and
+            backend workflows. I care about shipping useful work while keeping
+            the implementation understandable for the next developer.
+          </p>
+        </div>
       </UnifiedSection>
 
       <!-- My Values section - removed -->
@@ -100,8 +129,8 @@
       <!-- Personal Interests -->
       <UnifiedSection id="story-personal" title="Beyond the Code">
         <p>
-          When I'm not crafting beautiful websites, you'll find me exploring
-          other passions that fuel my creativity and keep me balanced.
+          Away from the screen, I enjoy the slower activities that help me
+          recharge, stay curious, and return to work with a clearer perspective.
         </p>
 
         <div class="personal-grid-container">
@@ -126,9 +155,9 @@
 
       <!-- Call to Action -->
       <CallToAction
-        heading="Let's Build Something Amazing Together"
-        text="I'm always excited to take on new challenges and collaborate on projects that make a difference. Whether you need a complete website overhaul, performance optimization, or custom development, I'd love to help bring your vision to life."
-        support-text="I offer expertise in front-end development, accessibility, and performance optimization"
+        heading="Let's Connect"
+        text="If you're looking for a Front-End Developer who cares about accessible interfaces, maintainable code, and thoughtful collaboration, I'd be pleased to hear from you."
+        support-text="Front-end development · Accessibility · Performance · Product collaboration"
       >
         <template #actions>
           <BaseButton
@@ -243,7 +272,7 @@ export default {
         {
           name: 'Front-End Development',
           icon: CodeBracketIcon,
-          color: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
+          color: 'linear-gradient(135deg, #a0a7d8, #757fc6)',
           skills: [
             { name: 'Vue.js', main: true },
             { name: 'JavaScript', main: true },
@@ -257,7 +286,7 @@ export default {
         {
           name: 'WordPress Expertise',
           icon: PuzzlePieceIcon,
-          color: 'linear-gradient(135deg, #8b5cf6, #6d28d9)',
+          color: 'linear-gradient(135deg, #b5a0d8, #9375c6)',
           skills: [
             { name: 'WordPress', main: true },
             { name: 'Gutenberg Blocks', main: true },
@@ -271,7 +300,7 @@ export default {
         {
           name: 'Performance & Quality',
           icon: BoltIcon,
-          color: 'linear-gradient(135deg, #f59e0b, #d97706)',
+          color: 'linear-gradient(135deg, #ffc39e, #ff9d61)',
           skills: [
             { name: 'Performance Optimization', main: true },
             { name: 'Core Web Vitals', main: true },
@@ -285,7 +314,7 @@ export default {
         {
           name: 'Development Workflow',
           icon: WrenchIcon,
-          color: 'linear-gradient(135deg, #6366f1, #4f46e5)',
+          color: 'linear-gradient(135deg, #6b8fd8, #3b6acb)',
           skills: [
             { name: 'Git', main: true },
             { name: 'Vite', main: true },
@@ -301,7 +330,7 @@ export default {
         {
           name: 'API Integration',
           icon: ServerIcon,
-          color: 'linear-gradient(135deg, #ec4899, #be185d)',
+          color: 'linear-gradient(135deg, #ef8d9c, #e7576d)',
           skills: [
             { name: 'RESTful APIs', main: true },
             { name: 'DevTools Network Tab', main: true },
@@ -315,7 +344,7 @@ export default {
         {
           name: 'Design & Analytics',
           icon: ChartBarIcon,
-          color: 'linear-gradient(135deg, #06b6d4, #0284c7)',
+          color: 'linear-gradient(135deg, #7dd3c8, #4fc4b5)',
           skills: [
             { name: 'Google Analytics', main: true },
             { name: 'HubSpot', main: true },

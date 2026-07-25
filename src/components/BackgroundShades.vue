@@ -247,7 +247,7 @@ export default {
   }
 
   &--blue-bell {
-    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    background: $gradient-blue;
   }
 
   &--aqua {

@@ -75,11 +75,14 @@
         width: 100%;
         height: auto;
         aspect-ratio: 1/1; // Keep image circular
-        border-radius: 50%;
         object-fit: cover;
-        border: 4px solid rgba(255, 255, 255, 0.8);
         box-shadow: $box-shadow-floating;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+        border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
+        background: $gradient-droplet;
+        border: 1px solid $glass-border;
+        backdrop-filter: blur(10px);
 
         &:hover {
           transform: scale(1.05) rotate(2deg);

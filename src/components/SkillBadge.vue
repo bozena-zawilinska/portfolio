@@ -42,7 +42,7 @@ export default {
       sparkle.style.position = 'absolute'
       sparkle.style.width = '4px'
       sparkle.style.height = '4px'
-      sparkle.style.background = '#1772f3'
+      sparkle.style.background = '#1568e0' // matches $interactive-primary
       sparkle.style.borderRadius = '50%'
       sparkle.style.pointerEvents = 'none'
       sparkle.style.animation = 'sparkleAnimation 0.6s ease-out forwards'

@@ -685,12 +685,12 @@ export default {
 
     &.email {
       background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-      color: #374151;
-      border-color: #d1d5db;
+      color: $text-secondary;
+      border-color: $color-disabled-border;
 
       &:hover {
         background: linear-gradient(135deg, #e5e7eb 0%, #f3f4f6 100%);
-        border-color: #9ca3af;
+        border-color: $color-disabled;
       }
     }
   }
