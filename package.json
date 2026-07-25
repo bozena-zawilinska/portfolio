@@ -6,6 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "test": "vitest run",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
@@ -28,34 +29,68 @@
     "@babel/core": "^7.26.0",
     "@babel/eslint-parser": "^7.12.16",
     "@babel/preset-env": "^7.26.0",
+    "@vitejs/plugin-vue": "^6.0.8",
+    "@vitest/coverage-v8": "^4.1.10",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "@vue/test-utils": "^2.4.11",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^9.32.0",
+    "eslint-plugin-vuejs-accessibility": "^2.5.0",
     "gh-pages": "^6.3.0",
+    "jsdom": "^29.1.1",
     "prettier": "^2.4.1",
     "sass": "^1.32.7",
     "sass-loader": "^13.3.3",
-    "svg2img": "^1.0.0-beta.2"
+    "svg2img": "^1.0.0-beta.2",
+    "vitest": "^4.1.10"
   },
   "eslintConfig": {
     "root": true,
     "env": {
-      "node": true
+      "node": true,
+      "browser": true
     },
     "extends": [
-      "plugin:vue/vue3-essential",
+      "plugin:vue/vue3-recommended",
       "eslint:recommended",
+      "plugin:vuejs-accessibility/recommended",
       "plugin:prettier/recommended"
     ],
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },
-    "rules": {}
+    "rules": {
+      "vuejs-accessibility/alt-text": "error",
+      "vuejs-accessibility/anchor-has-content": "error",
+      "vuejs-accessibility/aria-props": "error",
+      "vuejs-accessibility/aria-role": "error",
+      "vuejs-accessibility/aria-unsupported-elements": "error",
+      "vuejs-accessibility/click-events-have-key-events": "error",
+      "vuejs-accessibility/form-control-has-label": "error",
+      "vuejs-accessibility/heading-has-content": "error",
+      "vuejs-accessibility/iframe-has-title": "error",
+      "vuejs-accessibility/interactive-supports-focus": "error",
+      "vuejs-accessibility/label-has-for": [
+        "error",
+        {
+          "required": "id"
+        }
+      ],
+      "vuejs-accessibility/media-has-caption": "error",
+      "vuejs-accessibility/mouse-events-have-key-events": "error",
+      "vuejs-accessibility/no-access-key": "error",
+      "vuejs-accessibility/no-autofocus": "error",
+      "vuejs-accessibility/no-distracting-elements": "error",
+      "vuejs-accessibility/no-redundant-roles": "error",
+      "vuejs-accessibility/no-static-element-interactions": "error",
+      "vuejs-accessibility/role-has-required-aria-props": "error",
+      "vuejs-accessibility/tabindex-no-positive": "error"
+    }
   },
   "browserslist": [
     "> 1%",

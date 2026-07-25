@@ -11,9 +11,9 @@
           class="header animated-heading text--flex-center"
           :text="pageTitle"
           :speed="80"
-          wrapperElement="h1"
-          customCursorClass="heading"
-          @typingFinished="onAnimationFinished"
+          wrapper-element="h1"
+          custom-cursor-class="heading"
+          @typing-finished="onAnimationFinished"
         />
         <h1 v-else class="header text--flex-center">{{ pageTitle }}</h1>
 
@@ -26,9 +26,11 @@
 
     <!-- Background shades -->
     <BackgroundShades
-      v-if="backgroundShades && backgroundShades.length > 0"
-      :colors="backgroundShades"
-      :positions="backgroundPositions"
+      v-if="showBackgroundShades"
+      :primary-color="primaryShadeColor"
+      :secondary-color="secondaryShadeColor"
+      :tertiary-color="tertiaryShadeColor"
+      :show-tertiary="true"
     />
 
     <!-- Scroll to top button -->
@@ -82,17 +84,28 @@ export default {
       default: true,
       description: 'Whether to show the scroll to top button',
     },
-    backgroundShades: {
-      type: Array,
-      default: () => ['lavender', 'wisteria', 'blue-bell'],
-      description: 'Background shade colors',
+    showBackgroundShades: {
+      type: Boolean,
+      default: true,
+      description: 'Whether to render the ambient background shades',
     },
-    backgroundPositions: {
-      type: Array,
-      default: () => ['primary', 'secondary', 'tertiary'],
-      description: 'Background shade positions',
+    primaryShadeColor: {
+      type: String,
+      default: 'purple',
+      description: 'Primary background shade color',
+    },
+    secondaryShadeColor: {
+      type: String,
+      default: 'aqua',
+      description: 'Secondary background shade color',
+    },
+    tertiaryShadeColor: {
+      type: String,
+      default: 'blue-bell',
+      description: 'Tertiary background shade color',
     },
   },
+  emits: ['animationFinished'],
   data() {
     return {
       showScrollToTop: false,

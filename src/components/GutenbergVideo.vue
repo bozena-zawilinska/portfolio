@@ -1,22 +1,31 @@
 <template>
   <div class="video-showcase">
     <div class="video-card">
+      <!-- Reveals the Play/Pause button on hover/focus; the button itself
+      is the actual interactive control (mouse and keyboard already paired). -->
+      <!-- eslint-disable-next-line vuejs-accessibility/no-static-element-interactions -->
       <div
         class="video-container"
         @mouseenter="showButton = true"
         @mouseleave="hideButton"
+        @focusin="showButton = true"
+        @focusout="hideButton"
       >
         <!-- Video Element -->
+        <!-- Click-to-toggle on the video area is a mouse convenience;
+        the Play/Pause button below is the fully keyboard-accessible control. -->
+        <!-- TODO: add a <track kind="captions"> if this clip has spoken audio -->
+        <!-- eslint-disable-next-line vuejs-accessibility/no-static-element-interactions, vuejs-accessibility/click-events-have-key-events, vuejs-accessibility/media-has-caption -->
         <video
           ref="gutenbergVideo"
-          @click="toggleVideoPlayback"
-          @play="isPlaying = true"
-          @pause="isPlaying = false"
           loading="lazy"
           preload="none"
           :poster="
             require('@/assets/projects/prodpad/gutenberg-blocks-video-poster.png')
           "
+          @click="toggleVideoPlayback"
+          @play="isPlaying = true"
+          @pause="isPlaying = false"
         >
           <source
             src="@/assets/projects/prodpad/gutenberg-blocks-video.mp4"
@@ -28,10 +37,10 @@
         <!-- Play/Pause Button -->
         <button
           v-show="showButton"
-          @click="toggleVideoPlayback"
           :aria-label="isPlaying ? 'Pause video' : 'Play video'"
           :class="{ 'is-playing': isPlaying }"
           class="play-button"
+          @click="toggleVideoPlayback"
         >
           <svg
             v-if="!isPlaying"

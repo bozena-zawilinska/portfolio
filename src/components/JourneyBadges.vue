@@ -2,9 +2,9 @@
   <div class="journey-visual">
     <div class="journey-badges">
       <div
-        class="journey-badge journey-badge--tech"
         v-for="(badge, index) in badges"
         :key="index"
+        class="journey-badge journey-badge--tech"
         :class="'journey-badge--' + badge.type"
       >
         <component :is="getIconComponent(badge.icon)" class="journey-icon" />
@@ -159,34 +159,34 @@ export default {
   }
 
   &--tech {
-    border-top: 4px solid #3b82f6;
+    border-top: 4px solid $primary-blue;
 
     .journey-icon {
-      color: #3b82f6;
+      color: $primary-blue;
     }
   }
 
   &--implementation {
-    border-top: 4px solid #ec4899;
+    border-top: 4px solid $primary-coral;
 
     .journey-icon {
-      color: #ec4899;
+      color: $primary-coral;
     }
   }
 
   &--results {
-    border-top: 4px solid #10b981;
+    border-top: 4px solid $primary-aqua;
 
     .journey-icon {
-      color: #10b981;
+      color: $primary-aqua;
     }
   }
 
   &--ux {
-    border-top: 4px solid #8b5cf6;
+    border-top: 4px solid $primary-purple;
 
     .journey-icon {
-      color: #8b5cf6;
+      color: $primary-purple;
     }
   }
 }

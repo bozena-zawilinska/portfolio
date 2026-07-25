@@ -9,13 +9,13 @@
         class="header animated-heading text--flex-center"
         text="My Work"
         :speed="80"
-        wrapperElement="h1"
-        customCursorClass="heading"
-        @typingFinished="onFirstAnimationFinished"
+        wrapper-element="h1"
+        custom-cursor-class="heading"
+        @typing-finished="onFirstAnimationFinished"
       />
 
       <!-- Developer Introduction -->
-      <UnifiedSection id="work-intro" mediaAlignment="center">
+      <UnifiedSection id="work-intro" media-alignment="center">
         <template #media>
           <img
             src="@/assets/avatar-bz-3.png"
@@ -28,40 +28,38 @@
 
         <h2 class="visually-hidden">What I Bring to the Table</h2>
         <p>
-          With over 3 years of expertise in Vue.js and 5+ years mastering
-          WordPress, I'm a
-          <strong>results-driven Front-End Developer</strong> who transforms
-          design visions into exceptional digital experiences. I specialize in
-          crafting customized Gutenberg blocks and component libraries that
-          empower marketing teams to create stunning content independently.
+          I'm a <strong>Front-End Developer</strong> with professional WordPress
+          experience dating back to 2015 and commercial Vue.js experience since
+          joining ProdPad in 2022. In 2026, I also began developing my React
+          skills through independent learning and building The Areté Club.
         </p>
 
         <p>
-          As the sole web developer for ProdPad, I've delivered near-perfect
-          PageSpeed scores on both desktop and mobile while maintaining strict
-          accessibility standards.
+          My work spans SaaS product development, responsive business websites,
+          reusable Vue components, custom Gutenberg blocks, accessibility
+          improvements, API-connected interfaces, and front-end documentation.
+          At ProdPad, I have contributed to both the core product and the
+          marketing website, working closely with product, design, backend, and
+          marketing colleagues.
         </p>
 
         <p>
-          My approach combines
+          I focus on
           <span class="highlight"
-            >technical excellence with thoughtful design</span
-          >, creating solutions that not only look impressive but also drive
-          business results. <strong>My mission?</strong> To build digital
-          experiences that are
-          <strong>accessible, lightning-fast, and future-proof</strong>. Whether
-          you need performance optimization, custom development, or a seamless
-          user interface that converts visitors into customers, I'll bring your
-          vision to life with code that's as clean as it is effective.
+            >accessible interfaces, maintainable code, and dependable
+            implementation</span
+          >. The projects below show how I translate designs and requirements
+          into production websites and product features while considering
+          performance, usability, and the needs of the teams maintaining them.
         </p>
       </UnifiedSection>
 
       <!-- Interactive Cards Section -->
       <section class="work__value-props" aria-labelledby="value-props-heading">
         <h2 id="value-props-heading" class="section-title">
-          My Professional Value
+          What I Bring to a Team
         </h2>
-        <InteractiveCards :customCards="workValueCards" />
+        <InteractiveCards :custom-cards="workValueCards" />
       </section>
 
       <!-- Featured Projects -->
@@ -69,13 +67,12 @@
         <h2 id="featured-projects" class="section-title">Featured Projects</h2>
         <div class="featured-projects-grid">
           <article
-            v-for="project in projects.slice(0, 4)"
+            v-for="project in projects.slice(0, 5)"
             :key="project.id"
             :data-project-id="project.id"
             class="card featured-card"
             :class="{ 'is-expanded': project.showDetails }"
             :aria-expanded="project.showDetails"
-            role="article"
           >
             <header class="card__header">
               <h3 class="card__title">{{ project.title }}</h3>
@@ -90,7 +87,7 @@
             </header>
 
             <div class="card__content">
-              <h4 class="card__subtitle" role="text">{{ project.role }}</h4>
+              <h4 class="card__subtitle">{{ project.role }}</h4>
               <p class="card__description">
                 {{ project.summary }}
               </p>
@@ -102,10 +99,10 @@
             />
             <!-- Expandable details with smooth transitions -->
             <div
+              :id="'project-details-' + project.id"
               class="card__details"
               :class="{ show: project.showDetails }"
               :aria-expanded="project.showDetails"
-              :id="'project-details-' + project.id"
             >
               <div class="details__content">
                 <div class="details__text-content">
@@ -121,8 +118,8 @@
                 </div>
 
                 <div
-                  class="image-showcase"
                   v-if="project.images && project.images[0]"
+                  class="image-showcase"
                 >
                   <img
                     :src="getProjectPath(project.images[0].src)"
@@ -135,21 +132,20 @@
 
                 <!-- Skills badges -->
                 <div
-                  class="skill-badges"
                   v-if="project.skills"
+                  class="skill-badges"
                   role="list"
                   aria-label="Technologies used"
                 >
+                  <!-- Purely a cosmetic hover flourish; the skill name is
+                  always visible in the text, not gated behind interaction. -->
+                  <!-- eslint-disable-next-line vuejs-accessibility/no-static-element-interactions, vuejs-accessibility/mouse-events-have-key-events -->
                   <span
                     v-for="skill in project.skills"
                     :key="skill"
                     class="skill-badge"
                     role="listitem"
                     @mouseenter="animateSkill"
-                    @focus="animateSkill"
-                    @keydown="handleSkillKeydown"
-                    tabindex="0"
-                    :aria-label="`Technology: ${skill}`"
                   >
                     {{ skill }}
                   </span>
@@ -160,12 +156,12 @@
             <div class="card__actions">
               <BaseButton
                 variant="secondary"
-                @click="toggleDetails(project)"
                 :aria-expanded="project.showDetails"
                 :aria-controls="'project-details-' + project.id"
                 :aria-label="`${
                   project.showDetails ? 'Hide' : 'Show'
                 } details for ${project.title}`"
+                @click="toggleDetails(project)"
               >
                 <span class="button-text">{{
                   project.showDetails ? 'Show less' : 'Show more'
@@ -225,14 +221,16 @@
             :data-project-id="card.id"
             class="card project-card"
             :class="{ 'is-visible': card.isVisible }"
-            @click="openCardModal(card)"
-            @mouseenter="card.isHovered = true"
-            @mouseleave="card.isHovered = false"
-            @keydown.enter="openCardModal(card)"
-            @keydown.space.prevent="openCardModal(card)"
             tabindex="0"
             role="button"
             :aria-label="`${card.title} - Click to view details`"
+            @click="openCardModal(card, $event)"
+            @mouseenter="card.isHovered = true"
+            @mouseleave="card.isHovered = false"
+            @focus="card.isHovered = true"
+            @blur="card.isHovered = false"
+            @keydown.enter="openCardModal(card, $event)"
+            @keydown.space.prevent="openCardModal(card, $event)"
           >
             <div class="card__header">
               <h3 class="card__title">{{ card.title }}</h3>
@@ -263,21 +261,26 @@
         </div>
 
         <!-- Card Modal Overlay -->
+        <!-- Backdrop click-to-close is a mouse convenience; the close
+        button and Escape key already provide fully accessible alternatives. -->
+        <!-- eslint-disable-next-line vuejs-accessibility/no-static-element-interactions -->
         <div
           v-if="selectedCard"
+          ref="cardModalOverlay"
           class="card-modal-overlay"
-          @click="closeCardModal"
-          @keydown.escape="closeCardModal"
           tabindex="0"
           role="dialog"
           aria-modal="true"
           :aria-labelledby="`modal-title-${selectedCard.id}`"
+          @click="closeCardModal"
+          @keydown.escape="closeCardModal"
+          @keydown.tab="onCardModalTabKeydown"
         >
           <div class="card-modal" @click.stop>
             <button
               class="modal__close"
-              @click="closeCardModal"
               aria-label="Close modal"
+              @click="closeCardModal"
             >
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path
@@ -349,14 +352,14 @@
 
       <!-- Call to Action -->
       <CallToAction
-        support-text="Building accessible, performant websites that users love"
+        support-text="Front-end development · Accessibility · Maintainable implementation"
       >
-        <template #heading>Let's bring your vision to life!</template>
+        <template #heading>Interested in working together?</template>
         <template #text>
-          Whether you need a custom-built solution, a performance boost, or a
-          more accessible website,
+          If you're looking for a Front-End Developer with experience across
+          Vue.js, WordPress, accessible interfaces, and production websites,
           <router-link to="/contact" class="text-link"
-            >I'm here to help.</router-link
+            >I'd be pleased to hear from you.</router-link
           >
         </template>
       </CallToAction>
@@ -375,6 +378,9 @@ import TypingAnimation from '@/components/TypingAnimation.vue'
 import ProgressBar from '@/components/ProgressBar.vue'
 import InteractiveCards from '@/components/InteractiveCards.vue'
 import UnifiedSection from '@/components/UnifiedSection.vue'
+import { useFocusTrap } from '@/composables/useFocusTrap'
+
+const { trapFocus } = useFocusTrap()
 
 export default {
   name: 'WorkPage',
@@ -389,39 +395,38 @@ export default {
   },
   metaInfo() {
     return {
-      title:
-        'My Work - Bozena Zawilinska | Vue.js & WordPress Developer Portfolio',
+      title: 'My Work - Bozena Zawilinska | Front-End Developer Portfolio',
       meta: [
         {
           name: 'description',
           content:
-            'Explore my portfolio featuring Vue.js applications, WordPress websites, and custom Gutenberg blocks. 5+ years of experience building accessible, high-performance web solutions.',
+            'Explore front-end projects by Bozena Zawilinska, including Vue.js product development, WordPress websites, custom Gutenberg blocks, and a React business website.',
         },
         {
           name: 'keywords',
           content:
-            'Vue.js developer, WordPress developer, Gutenberg blocks, frontend development, web development portfolio, accessible websites, performance optimization',
+            'front-end developer, Vue.js developer, WordPress developer, React developer, Gutenberg blocks, accessible websites, web development portfolio',
         },
         {
           property: 'og:title',
-          content: 'My Work - Bozena Zawilinska | Vue.js & WordPress Developer',
+          content: 'My Work - Bozena Zawilinska | Front-End Developer',
         },
         {
           property: 'og:description',
           content:
-            'Explore my portfolio featuring Vue.js applications, WordPress websites, and custom Gutenberg blocks. 5+ years of experience building accessible, high-performance web solutions.',
+            'Explore front-end projects by Bozena Zawilinska, including Vue.js product development, WordPress websites, custom Gutenberg blocks, and a React business website.',
         },
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: 'https://bozena-zawilinska.com/work' },
         { name: 'twitter:card', content: 'summary_large_image' },
         {
           name: 'twitter:title',
-          content: 'My Work - Bozena Zawilinska | Vue.js & WordPress Developer',
+          content: 'My Work - Bozena Zawilinska | Front-End Developer',
         },
         {
           name: 'twitter:description',
           content:
-            'Explore my portfolio featuring Vue.js applications, WordPress websites, and custom Gutenberg blocks.',
+            'Explore my Vue.js, WordPress, accessibility, and React website projects.',
         },
       ],
       link: [{ rel: 'canonical', href: 'https://bozena-zawilinska.com/work' }],
@@ -433,12 +438,12 @@ export default {
             '@type': 'Portfolio',
             name: "Bozena Zawilinska's Web Development Portfolio",
             description:
-              'Portfolio showcasing Vue.js applications, WordPress websites, and custom Gutenberg blocks',
+              'Portfolio showcasing Vue.js product development, WordPress websites, custom Gutenberg blocks, and a React business website',
             url: 'https://bozena-zawilinska.com/work',
             author: {
               '@type': 'Person',
               name: 'Bozena Zawilinska',
-              jobTitle: 'Vue.js & WordPress Developer',
+              jobTitle: 'Front-End Developer',
               url: 'https://bozena-zawilinska.com',
             },
             workExample: this.projects.slice(0, 4).map((project) => ({
@@ -467,67 +472,67 @@ export default {
         {
           id: 1,
           type: 'performance',
-          title: 'Performance Expert',
+          title: 'Performance Focused',
           icon: 'BoltIcon',
           description:
-            'I transform sluggish websites into lightning-fast experiences, consistently achieving 95+ PageSpeed scores on both mobile and desktop. My optimization techniques ensure visitors stay engaged rather than frustrated by slow loading times.',
+            'I use Lighthouse, Core Web Vitals, browser tooling, and practical front-end improvements to identify performance issues and make websites faster and more reliable across devices.',
           funFact:
-            "I once reduced a client's page load time from 12 seconds to under 2 seconds with just four targeted optimizations!",
+            'On the ProdPad marketing website, my optimisation work helped maintain PageSpeed scores of 95 or above on key pages.',
           isHovered: false,
         },
         {
           id: 2,
           type: 'code',
-          title: 'Component Architect',
+          title: 'Reusable Components',
           icon: 'CodeBracketIcon',
           description:
-            'I build modular, reusable component systems that create consistency across platforms while dramatically reducing development time for new features. My code is clean, well-documented, and built to evolve with your business needs.',
+            'I build reusable Vue components and custom Gutenberg blocks that improve consistency, reduce repeated implementation work, and make future changes easier to manage.',
           funFact:
-            'My custom Gutenberg block library reduced content creation time by 60% for marketing teams!',
+            'At ProdPad, I contributed to reusable product components and built more than 20 custom Gutenberg blocks for the marketing team.',
           isHovered: false,
         },
         {
           id: 3,
           type: 'passion',
-          title: 'Implementation Specialist',
+          title: 'Design Implementation',
           icon: 'HeartIcon',
           description:
-            "Give me a design, and I'll bring it to life with pixel-perfect precision. I excel at transforming complex visual concepts into responsive, interactive interfaces that maintain design integrity across all devices and screen sizes.",
+            'I translate Figma files, supplied designs, and product requirements into responsive interfaces while preserving the intent of the design and handling real content, states, and screen sizes.',
           funFact:
-            'Designers love working with me because I notice even the smallest alignment details that others miss!',
+            'My early WordPress work involved turning supplied PDF designs into responsive, production-ready websites.',
           isHovered: false,
         },
         {
           id: 4,
           type: 'innovation',
-          title: 'Accessibility Advocate',
+          title: 'Accessibility Mindset',
           icon: 'SparklesIcon',
           description:
-            'I ensure your digital presence is truly accessible to everyone. My work complies with WCAG guidelines while maintaining beautiful design, reaching more users and protecting you from potential legal issues.',
+            'I consider semantic HTML, keyboard access, focus behaviour, labels, responsive zoom, motion preferences, and WCAG guidance throughout implementation rather than treating accessibility as a final check.',
           funFact:
-            'I maintain a custom accessibility checklist of 37 items that I review on every project!',
+            'Accessibility has been a consistent requirement across my SaaS, healthcare, charity, and independent website work.',
           isHovered: false,
         },
         {
           id: 5,
           type: 'problem',
-          title: 'Technical Problem Solver',
+          title: 'Technical Problem Solving',
           icon: 'PuzzlePieceIcon',
           description:
-            'Complex challenges are where I shine. From debugging intricate issues to optimizing complex workflows, I approach every problem methodically, breaking it down into manageable pieces and finding elegant solutions.',
+            'I investigate front-end issues methodically using browser developer tools, application context, API responses, logs, and focused testing before choosing an implementation.',
           funFact:
-            'I once fixed an elusive bug that had stumped three other developers for weeks!',
+            'My current product work regularly involves tracing behaviour across Vue components, shared composables, APIs, and backend workflows.',
           isHovered: false,
         },
         {
           id: 6,
           type: 'collaboration',
-          title: 'Self-Directed Professional',
+          title: 'Clear Collaboration',
           icon: 'UsersIcon',
           description:
-            "As someone who has worked as the sole developer in my roles, I've developed strong project management skills. I can prioritize effectively, communicate clearly with stakeholders, and deliver high-quality work without constant supervision.",
+            'I work independently when needed while keeping product, design, backend, marketing, and other developers informed through clear updates, documentation, code reviews, and early questions.',
           funFact:
-            "I've successfully managed and delivered 30+ projects from concept to completion with minimal oversight!",
+            'I have worked as a sole website developer and as part of a cross-functional SaaS product team.',
           isHovered: false,
         },
       ],
@@ -536,20 +541,14 @@ export default {
           id: 1,
           title: 'ProdPad - SaaS Platform',
           logo: 'prodpad/logo.png',
-          role: 'Frontend Developer',
+          role: 'Front-End Developer',
           summary:
             'Improved UX and accessibility for a product management platform by building reusable Vue.js components, refining the payment flow, maintaining and debugging existing features, and creating documentation to support future development.',
           showDetails: false,
           description:
             'I worked closely with the Product and Design teams to make the ProdPad platform more intuitive, inclusive, and user-friendly. My main focus was building a library of reusable Vue.js components to speed up development and improve consistency across the app.\n\nI contributed to improving the payment and subscription flow in areas powered by Recurly, and supported the frontend for analytics and CRM features tied to tools like Segment, Mixpanel, PostHog, and HubSpot. While I didn’t build the integrations from scratch, I helped ensure the frontend worked smoothly with existing APIs and services.\n\nClean, accessible, and maintainable code was always my priority. I used ESLint for consistency, followed accessibility best practices, and proactively improved documentation. I led efforts to document our front-end components using JSDoc, and created and maintained clear, developer-friendly guides in our FE repo Wiki, making onboarding and handover easier for the whole team.\n\n',
           link: 'https://www.prodpad.com/sandbox/',
-          skills: [
-            'VUE 3',
-            'HTML 5',
-            'Sassy CSS 💅',
-            'JavaScript',
-            'RESTful APIs',
-          ],
+          skills: ['Vue 3', 'HTML5', 'SCSS', 'JavaScript', 'RESTful APIs'],
           tools: ['Git', 'npm', 'Vite', 'ESLint', 'Figma'],
           images: [
             {
@@ -571,7 +570,7 @@ export default {
             'Developed 20+ custom Gutenberg blocks and optimized website performance, achieving 95+ PageSpeed scores while enabling flexible content management for marketing teams.',
           showDetails: false,
           description:
-            'As the sole website developer, I created a comprehensive library of over 20 custom Gutenberg blocks that completely transformed how our marketing team works. Instead of waiting for developer help, they can now build engaging, professional pages on their own.\n\nI integrated essential marketing tools like HubSpot for seamless form submissions and lead capture, LinkedIn advertising pixels for targeted campaigns, and Google Analytics for detailed performance insights. The best part? I managed to achieve 95+ PageSpeed scores on both desktop and mobile.\n\nSeeing the marketing team go from feeling limited to being completely autonomous in creating beautiful, high-performing pages was incredibly satisfying. They can now focus on strategy and creativity rather than technical constraints.',
+            'As the sole developer responsible for the ProdPad marketing website, I built and maintained a library of more than 20 custom Gutenberg blocks. These blocks gave the marketing team flexible, reusable page sections they could manage without requiring a developer for routine content changes.\n\nI supported HubSpot forms and lead capture, analytics and advertising scripts, responsive layouts, WordPress maintenance, and performance improvements. My optimisation work helped key pages achieve PageSpeed scores of 95 or above across desktop and mobile.\n\nThis role required balancing marketing flexibility with code quality, accessibility, consistent design, and site performance. I also handled ongoing debugging, releases, and technical improvements across the website.',
           link: 'https://www.prodpad.com/',
           skills: ['PHP', 'HTML & SCSS', 'JavaScript', 'Webpack', 'WordPress'],
           tools: ['ACF PRO', 'BrowserStack', 'GitHub', 'Figma'],
@@ -592,10 +591,10 @@ export default {
           logo: 'p4s/logo.png',
           role: 'Website Developer',
           summary:
-            'Led full-stack WordPress development managing the complete project lifecycle from local development to deployment, delivering high-quality accessible websites for diverse clients.',
+            'Built responsive WordPress websites from supplied designs, handling front-end development, theme customisation, local setup, testing, accessibility, and deployment for a range of clients.',
           showDetails: false,
           description:
-            'At Passion4Social, I worked closely with my manager and design team who would assign me projects with PDF designs that needed to be brought to life. Each project was unique, but my approach was always the same: study the design carefully, then transform it into clean, accessible code that matched the vision perfectly.\n\nUsing the Genesis Framework as my foundation, I converted creative PDF designs into fast, SEO-optimized websites that looked great on every device. I handled everything from setting up local development environments to managing deployments and ensuring each site met accessibility standards.\n\nWhat I loved most was the challenge of translating static designs into dynamic, functional websites. Whether it was a small local business or a larger organization, each successful launch felt like a win when the final result perfectly matched the original design vision.',
+            'At Passion4Social, I worked with my manager and the design team to turn supplied PDF designs into responsive WordPress websites for charities, public-sector organisations, and other clients.\n\nUsing WordPress, the Genesis Framework, PHP, HTML, CSS, and jQuery, I handled theme implementation, responsive behaviour, local development, browser testing, accessibility requirements, content setup, and deployment.\n\nThis role strengthened my ability to interpret static designs, work independently, and adapt a shared technical foundation to the needs of different organisations and audiences.',
           link: 'https://passion4social.com/',
           skills: [
             'PHP',
@@ -628,10 +627,10 @@ export default {
           logo: 'nhs/logo.svg',
           role: 'Website Developer',
           summary:
-            'Developed an accessible, user-friendly healthcare platform for NHS Lothian, featuring interactive guides and comprehensive resources for children, families, and healthcare professionals.',
+            'Built an accessible WordPress website for NHS Lothian, translating supplied designs into responsive pages and resources for children, families, and healthcare professionals.',
           showDetails: false,
           description:
-            'This project was especially meaningful to me - creating a digital space that could help reduce anxiety for children and families during hospital visits. I developed interactive guides that explain medical procedures in child-friendly language, complete with visual aids and reassuring explanations.\n\nThe site serves multiple audiences: children who need age-appropriate information, parents seeking detailed guidance, and healthcare professionals looking for resources. I made sure everything was fully accessible and followed WCAG guidelines, because healthcare information should be available to everyone.\n\nKnowing that this platform might help a scared child feel more prepared for their hospital visit, or give parents the information they need to support their family, made every line of code feel purposeful.',
+            'I developed this website while working at Passion4Social, translating supplied designs into a responsive WordPress implementation for NHS Lothian.\n\nThe site supports children, families, and healthcare professionals, so clear structure, readable content, responsive behaviour, and accessibility were central requirements. I implemented the front-end templates and content presentation using WordPress, the Genesis Framework, PHP, HTML, CSS, and jQuery.\n\nThe project was a meaningful example of how careful front-end implementation can make important healthcare information easier to access and understand.',
           link: 'https://children.nhslothian.scot/',
           skills: [
             'PHP',
@@ -659,6 +658,34 @@ export default {
           ],
         },
         {
+          id: 11,
+          title: 'The Areté Club',
+          logo: 'arete/arete-logo.png',
+          role: 'Founder & Front-End Developer',
+          summary:
+            'Designed, developed, and maintain a production website for my own brand, combining modern front-end development with accessibility, responsive design, performance, and SEO best practices.',
+          showDetails: false,
+          description:
+            'The Areté Club is an independent business and learning project that I designed and built from the ground up in 2026. It is also the project through which I began developing practical experience with React.\n\nI own the complete website lifecycle, including information architecture, UX decisions, visual design, reusable React components, responsive SCSS, accessibility, SEO, deployment, analytics, and ongoing maintenance.\n\nBecause it supports a real business, I continue to improve the website based on user feedback and observed behaviour. The project demonstrates my ability to learn a new framework, make product decisions, and take a website from an early concept to a live production experience.',
+          link: 'https://www.theareteclub.com/',
+          skills: [
+            'React',
+            'JavaScript',
+            'HTML5',
+            'SCSS',
+            'Responsive Design',
+            'Accessibility (WCAG)',
+            'SEO',
+            'Performance Optimisation',
+          ],
+          images: [
+            {
+              src: 'arete/arete-website.png',
+              alt: 'The Areté Club website',
+            },
+          ],
+        },
+        {
           id: 5,
           title: 'Just Enterprise',
           logo: 'just-enterprise/logo.png',
@@ -667,13 +694,13 @@ export default {
           isHovered: false,
           isVisible: false,
           description:
-            "Provided ongoing website maintenance and performance optimization for Scotland's leading social enterprise support organization.",
+            "Provided ongoing website maintenance and performance optimisation for Scotland's leading social enterprise support organisation.",
           link: 'https://justenterprise.org/',
           skills: [
             'WordPress',
             'PHP',
             'HTML & CSS',
-            'Performance Optimization',
+            'Performance Optimisation',
           ],
           images: [
             {
@@ -755,7 +782,7 @@ export default {
           description:
             'Created streamlined grant application platform for North Lanarkshire Council supporting local environmental projects.',
           link: 'https://environmentalkeyfund.com/',
-          skills: ['WordPress', 'Form Integration', 'Performance Optimization'],
+          skills: ['WordPress', 'Form Integration', 'Performance Optimisation'],
           images: [
             {
               src: 'ekf/ekf-website.png',
@@ -843,9 +870,6 @@ export default {
         // Handle smooth expansion/collapse
         this.$nextTick(() => {
           if (projectElement) {
-            const detailsElement =
-              projectElement.querySelector('.card__details')
-
             // If expanding and card is below viewport, scroll to keep it in view
             if (newState && projectTop < currentScrollY) {
               const offset = 100 // Add some breathing room
@@ -887,16 +911,7 @@ export default {
           showDetails: newState,
         }
 
-        // Debug: Check if the DOM classes are being applied
         this.$nextTick(() => {
-          const projectElement = this.$el.querySelector(
-            `[data-project-id="${id}"]`
-          )
-          if (projectElement) {
-            const overlayElement =
-              projectElement.querySelector('.card__overlay')
-          }
-
           // Reset toggle lock after animation completes
           setTimeout(() => {
             this.isToggling = false
@@ -974,14 +989,6 @@ export default {
       }, 200)
     },
 
-    // Add keyboard support for skill badges
-    handleSkillKeydown(event) {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault()
-        this.animateSkill(event)
-      }
-    },
-
     // Improve accessibility with focus management
     manageFocus(projectId, expanding) {
       this.$nextTick(() => {
@@ -998,7 +1005,8 @@ export default {
       })
     },
 
-    openCardModal(card) {
+    openCardModal(card, event) {
+      this.cardModalTrigger = event?.currentTarget || null
       this.selectedCard = card
       // Prevent body scroll when modal is open
       document.body.style.overflow = 'hidden'
@@ -1014,6 +1022,12 @@ export default {
       this.selectedCard = null
       // Restore body scroll
       document.body.style.overflow = ''
+      this.cardModalTrigger?.focus()
+      this.cardModalTrigger = null
+    },
+
+    onCardModalTabKeydown(event) {
+      trapFocus(this.$refs.cardModalOverlay, event)
     },
   },
 }
@@ -1290,6 +1304,13 @@ export default {
       cursor: pointer;
       transition: all 0.3s ease;
       user-select: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      height: 2.125rem; // fixed height so oversized emoji glyphs can't inflate the badge
+      overflow: hidden; // clip oversized line-box some emoji glyphs force, keeping badge heights uniform
+      line-height: 1.2;
 
       &:hover,
       &:focus {

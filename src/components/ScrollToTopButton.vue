@@ -2,11 +2,11 @@
   <Transition name="scroll-button" appear>
     <button
       v-if="visible"
-      @click="scrollToTop"
       class="scroll-to-top"
       aria-label="Scroll to top of page"
       title="Scroll to top"
       type="button"
+      @click="scrollToTop"
     >
       <svg
         class="scroll-icon"

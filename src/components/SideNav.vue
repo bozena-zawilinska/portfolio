@@ -1,30 +1,35 @@
 <template>
   <div class="side-nav__container">
-    <button class="hamburger-btn" @click="toggleNav" v-if="isCollapsed">
+    <button v-if="isCollapsed" class="hamburger-btn" @click="toggleNav">
       <Bars3Icon class="menu-icon" />
     </button>
     <nav
+      v-show="!isCollapsed || !isMobile"
       class="side-nav"
       :class="{ collapsed: isCollapsed }"
-      v-show="!isCollapsed || !isMobile"
     >
       <ul>
+        <!-- Tracks hover/focus purely to show a tooltip on the collapsed
+        nav; the actual navigation link is the focusable <a> inside. -->
+        <!-- eslint-disable-next-line vuejs-accessibility/no-static-element-interactions -->
         <li
           v-for="(item, index) in menuItems"
           :key="index"
+          v-float="isCollapsed && hoverItem === index ? item.title : ''"
+          v-tooltip.auto="isCollapsed && hoverItem === index ? item.title : ''"
           class="nav-item"
+          :title="isCollapsed && hoverItem === index ? item.title : ''"
           @mouseover="hoverItem = index"
           @mouseleave="hoverItem = null"
-          v-float="isCollapsed && hoverItem === index ? item.title : ''"
-          v-bind:title="isCollapsed && hoverItem === index ? item.title : ''"
-          v-tooltip.auto="isCollapsed && hoverItem === index ? item.title : ''"
+          @focusin="hoverItem = index"
+          @focusout="hoverItem = null"
         >
           <router-link
+            v-slot="{ href, navigate, isActive }"
             :to="item.link"
             custom
-            v-slot="{ href, navigate, isActive }"
           >
-            <a :href="href" @click="navigate" :class="{ active: isActive }">
+            <a :href="href" :class="{ active: isActive }" @click="navigate">
               <span class="icon">
                 <component :is="item.icon" class="hero-icon" />
                 <span
@@ -38,16 +43,21 @@
           </router-link>
         </li>
       </ul>
-      <a class="button button--toggle" @click="toggleNav">
+      <button
+        type="button"
+        class="button button--toggle"
+        :aria-label="isCollapsed ? 'Expand navigation' : 'Hide navigation'"
+        @click="toggleNav"
+      >
         <ChevronDoubleRightIcon
           v-if="isCollapsed"
-          class="toggle-icon"
           v-tooltip.auto="'Use [ to expand'"
+          class="toggle-icon"
         />
         <div
           v-else-if="!isCollapsed && !isMobile"
-          class="hide-button-content"
           v-tooltip.auto="'Use [ to hide'"
+          class="hide-button-content"
         >
           <span class="hide-text">Hide</span>
           <ChevronDoubleLeftIcon class="toggle-icon" />
@@ -56,7 +66,7 @@
           <span class="hide-text">Close</span>
           <XMarkIcon class="toggle-icon" />
         </div>
-      </a>
+      </button>
     </nav>
   </div>
 </template>
@@ -90,6 +100,7 @@ export default {
       required: true,
     },
   },
+  emits: ['update:isCollapsed'],
   data() {
     return {
       isMobile: false,
@@ -101,6 +112,20 @@ export default {
         { title: 'Get in Touch', link: '/contact', icon: 'EnvelopeIcon' },
       ],
     }
+  },
+  mounted() {
+    // Initial check for mobile devices
+    this.updateIsMobile()
+    // Listen for window resize to update the mobile state
+    window.addEventListener('resize', this.updateIsMobile)
+    // Listen for the '[' key to toggle the navigation
+    window.addEventListener('keydown', this.handleKeyDown)
+  },
+  beforeUnmount() {
+    // Clean up the event listener
+    window.removeEventListener('resize', this.updateIsMobile)
+    // Remove the event listener when the component is destroyed
+    window.removeEventListener('keydown', this.handleKeyDown)
   },
   methods: {
     isActiveRoute(link) {
@@ -120,20 +145,6 @@ export default {
       // Updates the isMobile property based on the screen width
       this.isMobile = window.innerWidth <= 768
     },
-  },
-  mounted() {
-    // Initial check for mobile devices
-    this.updateIsMobile()
-    // Listen for window resize to update the mobile state
-    window.addEventListener('resize', this.updateIsMobile)
-    // Listen for the '[' key to toggle the navigation
-    window.addEventListener('keydown', this.handleKeyDown)
-  },
-  beforeUnmount() {
-    // Clean up the event listener
-    window.removeEventListener('resize', this.updateIsMobile)
-    // Remove the event listener when the component is destroyed
-    window.removeEventListener('keydown', this.handleKeyDown)
   },
 }
 </script>
@@ -284,6 +295,17 @@ export default {
   &:not(.collapsed) {
     .icon {
       margin-right: $space-2;
+    }
+
+    @include breakpoint-up(md) {
+      ul {
+        .nav-item {
+          text-align: left;
+          a {
+            justify-content: flex-start;
+          }
+        }
+      }
     }
   }
 

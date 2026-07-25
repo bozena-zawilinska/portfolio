@@ -1,8 +1,13 @@
 <template>
   <span
     class="skill-badge"
+    role="button"
+    tabindex="0"
     @mouseenter="animateSkill"
+    @focus="animateSkill"
     @click="$emit('click', skill)"
+    @keydown.enter="$emit('click', skill)"
+    @keydown.space.prevent="$emit('click', skill)"
   >
     {{ skill }}
   </span>
@@ -37,7 +42,7 @@ export default {
       sparkle.style.position = 'absolute'
       sparkle.style.width = '4px'
       sparkle.style.height = '4px'
-      sparkle.style.background = '#1772f3'
+      sparkle.style.background = '#1568e0' // matches $interactive-primary
       sparkle.style.borderRadius = '50%'
       sparkle.style.pointerEvents = 'none'
       sparkle.style.animation = 'sparkleAnimation 0.6s ease-out forwards'

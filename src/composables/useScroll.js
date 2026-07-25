@@ -106,12 +106,7 @@ export function useSmoothScroll() {
   }
 
   const scrollToElement = (element, options = {}) => {
-    const {
-      behavior = 'smooth',
-      block = 'start',
-      inline = 'nearest',
-      offset = 0,
-    } = options
+    const { behavior = 'smooth', offset = 0 } = options
 
     if (typeof element === 'string') {
       element = document.querySelector(element)

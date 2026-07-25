@@ -1,5 +1,5 @@
 <template>
-  <div class="background-shades">
+  <div class="background-shades" aria-hidden="true">
     <!-- Primary shade -->
     <div
       v-if="showPrimary"
@@ -73,7 +73,9 @@ export default {
       type: String,
       default: 'purple',
       validator: (value) =>
-        ['purple', 'coral', 'blue', 'green', 'orange', 'pink'].includes(value),
+        ['purple', 'coral', 'blue', 'green', 'orange', 'pink', 'aqua'].includes(
+          value
+        ),
     },
 
     /**
@@ -83,7 +85,9 @@ export default {
       type: String,
       default: 'coral',
       validator: (value) =>
-        ['purple', 'coral', 'blue', 'green', 'orange', 'pink'].includes(value),
+        ['purple', 'coral', 'blue', 'green', 'orange', 'pink', 'aqua'].includes(
+          value
+        ),
     },
 
     /**
@@ -101,6 +105,7 @@ export default {
           'orange',
           'pink',
           'blue-bell',
+          'aqua',
         ].includes(value),
     },
 
@@ -242,7 +247,11 @@ export default {
   }
 
   &--blue-bell {
-    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    background: $gradient-blue;
+  }
+
+  &--aqua {
+    background: $gradient-water;
   }
 
   // Animation

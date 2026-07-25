@@ -19,7 +19,7 @@ This is a simple portfolio website built using Vue 3 and hosted on GitHub Pages.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/bozena-zawilinska/welcome.git
+   git clone https://github.com/bozena-zawilinska/portfolio.git
    cd welcome
    ```
 
