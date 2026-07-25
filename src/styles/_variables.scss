@@ -43,25 +43,68 @@ $glass-border: rgba(255, 255, 255, 0.5);
 
 // Accent Gradients
 $gradient-hero: linear-gradient(to bottom left,
-    $primary-coral 40%,
-    $primary-peach 100%);
+        $primary-coral 40%,
+        $primary-peach 100%);
 $gradient-purple: linear-gradient(135deg,
-    $primary-purple 0%,
-    rgba($primary-purple, 0.3) 100%);
+        $primary-purple 0%,
+        rgba($primary-purple, 0.3) 100%);
 $gradient-blue: linear-gradient(135deg,
-    $primary-blue 0%,
-    rgba($primary-blue, 0.3) 100%);
+        $primary-blue 0%,
+        rgba($primary-blue, 0.3) 100%);
 $gradient-coral: linear-gradient(135deg,
-    $primary-coral 0%,
-    rgba($primary-coral, 0.3) 100%);
+        $primary-coral 0%,
+        rgba($primary-coral, 0.3) 100%);
 $gradient-water: linear-gradient(135deg,
-    $primary-aqua 0%,
-    $primary-blue 60%,
-    $primary-purple 100%);
+        $primary-aqua 0%,
+        $primary-blue 60%,
+        $primary-purple 100%);
 $gradient-droplet: radial-gradient(circle at 30% 30%,
-    rgba(255, 255, 255, 0.6) 0%,
-    rgba($primary-aqua, 0.3) 40%,
-    rgba($primary-blue, 0.15) 100%);
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba($primary-aqua, 0.3) 40%,
+        rgba($primary-blue, 0.15) 100%);
+$gradient-droplet-coral: radial-gradient(circle at 30% 30%,
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba($primary-coral, 0.3) 40%,
+        rgba($primary-peach, 0.15) 100%);
+$gradient-droplet-purple: radial-gradient(circle at 30% 30%,
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba($primary-purple, 0.3) 40%,
+        rgba($primary-blue, 0.15) 100%);
+$gradient-button-primary: radial-gradient(circle at 25% 20%,
+        rgba(255, 255, 255, 0.35) 0%,
+        rgba(255, 255, 255, 0) 55%),
+    linear-gradient(135deg,
+        $primary-coral 0%,
+        $primary-peach 100%);
+$gradient-button-secondary: linear-gradient(135deg,
+        rgba($primary-aqua, 0.1) 0%,
+        rgba($primary-blue, 0.1) 100%);
+
+// Solid on-palette gradients for category/type icon badges —
+// full-opacity so white icons keep contrast (unlike the translucent
+// $gradient-purple/$gradient-blue/etc used for glass surfaces).
+// Second stop is each primary color at -12% HSL lightness — hardcoded
+// (rather than darken()) so these hex values can be mirrored exactly
+// in JS-driven inline styles (see AboutPage/InteractiveCards/JourneyBadges).
+$gradient-icon-coral: linear-gradient(135deg,
+        $primary-coral 0%,
+        #e7576d 100%);
+$gradient-icon-peach: linear-gradient(135deg,
+        $primary-peach 0%,
+        #ff9d61 100%);
+$gradient-icon-purple: linear-gradient(135deg,
+        $primary-purple 0%,
+        #9375c6 100%);
+$gradient-icon-blue: linear-gradient(135deg,
+        $primary-blue 0%,
+        #757fc6 100%);
+$gradient-icon-aqua: linear-gradient(135deg,
+        $primary-aqua 0%,
+        #4fc4b5 100%);
+$gradient-icon-deep-blue: linear-gradient(135deg,
+        $primary-deep-blue 0%,
+        #3b6acb 100%);
+
 
 // Status Colors (WCAG Compliant)
 $status-success: #059669; // Green
@@ -120,21 +163,21 @@ $dark-gunmetal: #333e61; // Used for side nav background and tooltip text
 // Light Theme Gradients
 $red-background: $gradient-hero; // Updated to match your hero gradient
 $green-background: linear-gradient(to bottom right,
-    $soft-green 40%,
-    $soft-cyan 100%);
+        $soft-green 40%,
+        $soft-cyan 100%);
 $blue-background: $gradient-blue;
 $purple-background: $gradient-purple;
 
 // Additional Light Theme Gradients
 $gradient-soft-background: linear-gradient(135deg,
-    $background-primary 0%,
-    $background-secondary 100%);
+        $background-primary 0%,
+        $background-secondary 100%);
 $gradient-card: linear-gradient(135deg,
-    $surface-primary 0%,
-    $surface-secondary 100%);
+        $surface-primary 0%,
+        $surface-secondary 100%);
 $gradient-accent-light: linear-gradient(135deg,
-    rgba($primary-coral, 0.1) 0%,
-    rgba($primary-peach, 0.1) 100%);
+        rgba($primary-coral, 0.1) 0%,
+        rgba($primary-peach, 0.1) 100%);
 
 // Font Sizes
 $font-size-small: 0.833rem;
@@ -165,7 +208,7 @@ $box-shadow-strong: 0 8px 32px rgba(0, 0, 0, 0.16);
 $box-shadow-light: 0 1px 3px rgba(0, 0, 0, 0.05);
 $box-shadow-card: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
 $box-shadow-floating: 0 10px 25px rgba(0, 0, 0, 0.1),
-  0 4px 10px rgba(0, 0, 0, 0.06);
+    0 4px 10px rgba(0, 0, 0, 0.06);
 
 // Transition
 $transition: all 0.3s ease-in-out;

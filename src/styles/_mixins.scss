@@ -23,7 +23,7 @@
 }
 
 @mixin light-button-primary {
-  background: $gradient-hero;
+  background: $gradient-button-primary;
   color: $text-inverse;
   border: none;
   border-radius: 12px;
@@ -44,9 +44,9 @@
 }
 
 @mixin light-button-secondary {
-  background: $background-primary;
+  background: $gradient-button-secondary;
   color: $text-primary;
-  border: 2px solid $surface-border;
+  border: 2px solid rgba($primary-aqua, 0.35);
   border-radius: 12px;
   padding: 10px 22px;
   font-weight: 500;
@@ -57,8 +57,8 @@
   align-items: center;
 
   &:hover {
-    border-color: $interactive-primary;
-    color: $interactive-primary;
+    border-color: $primary-deep-blue;
+    color: $text-primary;
     transform: translateY(-1px);
     box-shadow: $box-shadow-soft;
   }
@@ -120,7 +120,9 @@
       opacity: 1;
       transform: translateY(0);
     }
-  } @else {
+  }
+
+  @else {
     opacity: 1;
     transform: translateY(0);
   }

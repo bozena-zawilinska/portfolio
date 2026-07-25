@@ -107,39 +107,39 @@ export default {
 
     .floating-shape {
       position: absolute;
-      border-radius: 50%;
-      background: linear-gradient(
-        135deg,
-        rgba($primary-purple, 0.15),
-        rgba($primary-coral, 0.1)
-      );
-      filter: blur(60px);
+
+      border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
+      background: $gradient-purple;
+      border: 1px solid $glass-border;
+      backdrop-filter: blur(10px);
 
       &--1 {
-        width: 300px;
-        height: 300px;
-        top: -100px;
-        left: -100px;
-        animation: float 8s ease-in-out infinite;
+        width: clamp(80px, 10vw, 150px);
+        height: clamp(80px, 10vw, 150px);
+        top: 15%;
+        left: 5%;
+        animation: float 6s ease-in-out infinite;
+        background: $gradient-droplet-purple;
       }
 
       &--2 {
-        width: 200px;
-        height: 200px;
-        top: -50px;
-        right: -80px;
-        animation: float 10s ease-in-out infinite reverse;
-        animation-delay: -2s;
+        width: clamp(60px, 8vw, 80px);
+        height: clamp(60px, 8vw, 80px);
+        top: 60%;
+        right: 15%;
+        border-radius: 45% 55% 40% 60% / 55% 45% 60% 40%;
+        animation: float 8s ease-in-out infinite reverse;
+        background: $gradient-droplet-coral;
       }
 
       &--3 {
-        width: 250px;
-        height: 250px;
-        bottom: -100px;
-        left: 50%;
-        transform: translateX(-50%);
-        animation: float 12s ease-in-out infinite;
-        animation-delay: -4s;
+        width: clamp(40px, 6vw, 60px);
+        height: clamp(40px, 6vw, 60px);
+        bottom: 20%;
+        left: 20%;
+        border-radius: 55% 45% 50% 50% / 45% 55% 45% 55%;
+        animation: float 10s ease-in-out infinite;
+        background: $gradient-droplet;
       }
     }
   }
