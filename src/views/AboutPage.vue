@@ -3,44 +3,48 @@
     <PageLayout
       page-class="about"
       page-title="My Story"
-      page-tagline="A journey of curiosity, creativity, and code"
+      page-tagline="Thoughtful front-end engineering, built around people and maintainable systems"
       @animation-finished="onFirstAnimationFinished"
     >
       <!-- Hero Introduction -->
       <UnifiedSection id="story-intro" media-alignment="center">
         <template #media>
-          <img
-            src="@/assets/avatar-bz-2.png"
-            alt="Bozena's profile photo"
-            width="200"
-            height="200"
-            class="profile-image"
-          />
+          <div class="portrait">
+            <!-- <div class="portrait__backdrop" aria-hidden="true"></div> -->
+            <img
+              src="@/assets/avatar-bz-2.png"
+              alt="Bozena Zawilinska, Front-End Engineer"
+              width="200"
+              height="200"
+              class="profile-image"
+            />
+            <!-- <div class="portrait__outline" aria-hidden="true"></div> -->
+          </div>
         </template>
 
         <h2 class="visually-hidden">Introduction</h2>
         <p>
-          I'm <strong>Bozena</strong>, a Front-End Developer who builds fast,
-          accessible, and maintainable websites and web applications. I care
-          about thoughtful user experiences, clear code, and making complex
-          requirements feel simple.
+          I'm <strong>Bozena</strong>, a Front-End Engineer who builds
+          accessible, maintainable and high-performance websites and web
+          applications. I care about thoughtful user experiences, clear code and
+          making complex requirements feel simpler.
         </p>
 
         <p>
           My journey into web development began with a simple question:
           <em>"How do these websites actually work?"</em> That curiosity grew
           into a career focused on turning ideas and designs into reliable
-          digital products that work well for both users and the teams who
-          maintain them.
+          digital products that work well for users and for the teams
+          maintaining them.
         </p>
 
         <p>
           I enjoy working where
           <span class="highlight"
             >thoughtful design meets practical engineering</span
-          >—building reusable components, improving accessibility, solving
-          front-end problems, and refining the details that make a product
-          easier to use.
+          >: building reusable components, improving accessibility, solving
+          front-end problems and refining the details that make a product easier
+          to use.
         </p>
       </UnifiedSection>
 
@@ -55,8 +59,8 @@
             <p>
               Over the past <strong>five years</strong>, I've built accessible,
               high-performance digital products for SaaS companies, marketing
-              teams, charities, and businesses. My work spans customer-facing
-              applications, marketing websites, design systems, and
+              teams, charities and businesses. My work spans customer-facing
+              applications, marketing websites, reusable component systems and
               content-managed platforms.
             </p>
 
@@ -67,24 +71,28 @@
               </span>
               . I've developed reusable component libraries, implemented complex
               product features, improved accessibility across existing
-              applications, and built custom Gutenberg blocks that enable
+              applications and built custom Gutenberg blocks that enable
               non-technical teams to create and manage content independently.
             </p>
 
             <p>
-              I enjoy taking ideas from concept to release, working closely with
-              designers, product managers, backend developers, and fellow
-              front-end engineers throughout the development process. Whether
-              I'm building new features, improving performance, fixing complex
-              interface issues, or documenting systems for future developers, I
-              focus on writing clean, maintainable code that solves real user
-              problems.
+              I enjoy taking work from early requirements through
+              implementation, testing, review and release. I collaborate closely
+              with designers, product managers, backend developers and other
+              front-end engineers, asking the questions needed to make behaviour
+              clear before it becomes code.
             </p>
 
             <p>
-              For me, accessibility, performance, and maintainability aren't
-              separate tasks—they're part of every feature from the first line
-              of code.
+              Whether I'm building a feature, improving performance, fixing an
+              interface issue or documenting a connected workflow, I focus on
+              code that solves the immediate problem without making the next
+              change harder.
+            </p>
+
+            <p>
+              Accessibility, performance and maintainability are not separate
+              tasks. They are part of the work from the beginning.
             </p>
           </div>
 
@@ -109,18 +117,68 @@
       <UnifiedSection id="story-working-style" title="How I Work">
         <div class="working-style">
           <p>
-            I enjoy collaborating early, asking clear questions, and breaking
-            larger problems into manageable steps. I document important
-            decisions, value constructive code reviews, and aim to leave the
-            codebase easier to work with than I found it.
+            I collaborate early, ask clear questions and break larger problems
+            into manageable steps. I value constructive code review, communicate
+            progress honestly and document decisions while the context is still
+            fresh.
           </p>
 
           <p>
             I'm particularly attentive to accessibility, reusable architecture,
-            edge cases, and the connection between front-end behaviour and
+            edge cases and the relationship between front-end behaviour and
             backend workflows. I care about shipping useful work while keeping
             the implementation understandable for the next developer.
           </p>
+        </div>
+      </UnifiedSection>
+
+      <!-- Engineering Principles -->
+      <UnifiedSection
+        id="story-principles"
+        title="Engineering Principles"
+        variant="default"
+      >
+        <p>
+          The principles below guide how I make decisions, collaborate and leave
+          a codebase for the people working in it next.
+        </p>
+
+        <div class="principles-grid">
+          <div class="principle-card">
+            <h3>Accessibility is part of implementation</h3>
+            <p>
+              Semantic HTML, keyboard access, focus behaviour, labels, motion
+              preferences and responsive zoom should be considered while a
+              feature is built, not after it appears complete.
+            </p>
+          </div>
+
+          <div class="principle-card">
+            <h3>Build for the next developer</h3>
+            <p>
+              A solution should be understandable beyond the pull request. I
+              favour clear names, reusable patterns, useful comments and
+              documentation that preserves the reasoning behind connected
+              workflows.
+            </p>
+          </div>
+
+          <div class="principle-card">
+            <h3>Prefer clarity over cleverness</h3>
+            <p>
+              The simplest dependable solution is usually more valuable than an
+              abstraction that is difficult to explain, test or change.
+            </p>
+          </div>
+
+          <div class="principle-card">
+            <h3>Ask questions before assumptions become code</h3>
+            <p>
+              Early conversations with product, design and backend teammates
+              often prevent inconsistent states, hidden edge cases and expensive
+              rework.
+            </p>
+          </div>
         </div>
       </UnifiedSection>
 
@@ -153,11 +211,27 @@
 
       <!-- Working Philosophy section - removed -->
 
+      <!-- Download CV -->
+      <UnifiedSection
+        id="download-cv"
+        title="Full Professional Profile"
+        variant="highlight unified-section--centered"
+      >
+        <p style="margin: auto">
+          Interested in the full details of my experience, technical background
+          and training?
+        </p>
+
+        <template #actions>
+          <CvDownloadButton />
+        </template>
+      </UnifiedSection>
+
       <!-- Call to Action -->
       <CallToAction
-        heading="Let's Connect"
-        text="If you're looking for a Front-End Developer who cares about accessible interfaces, maintainable code, and thoughtful collaboration, I'd be pleased to hear from you."
-        support-text="Front-end development · Accessibility · Performance · Product collaboration"
+        heading="Let's Build Something Thoughtful"
+        text="I enjoy working with teams that care about accessible interfaces, maintainable code and solving real product problems. If that sounds like your team, I'd be pleased to hear from you."
+        support-text="Front-end engineering · Accessibility · Performance · Product collaboration"
       >
         <template #actions>
           <BaseButton
@@ -168,7 +242,7 @@
             aria-label="View my portfolio work"
             class="cta-button"
           >
-            See My Work
+            View My Work
           </BaseButton>
           <BaseButton
             variant="secondary"
@@ -193,12 +267,13 @@ import {
   CodeBracketIcon,
   WrenchIcon,
   ServerIcon,
-  BoltIcon,
+  ShieldCheckIcon,
   PuzzlePieceIcon,
-  ChartBarIcon,
+  SparklesIcon,
 } from '@heroicons/vue/24/outline'
 import PageLayout from '@/components/PageLayout.vue'
 import BaseButton from '@/components/Button.vue'
+import CvDownloadButton from '@/components/CvDownloadButton.vue'
 import CallToAction from '@/components/CallToAction.vue'
 import UnifiedSection from '@/components/UnifiedSection.vue'
 // import JourneyTimeline from '@/components/JourneyTimeline.vue'
@@ -212,6 +287,7 @@ export default {
     PageLayout,
     UnifiedSection,
     BaseButton,
+    CvDownloadButton,
     CallToAction,
     // JourneyTimeline,
     SkillsGrid,
@@ -270,45 +346,56 @@ export default {
       // Skill categories for the SkillsGrid component
       skillCategories: [
         {
-          name: 'Front-End Development',
+          name: 'Front-End Engineering',
           icon: CodeBracketIcon,
           color: 'linear-gradient(135deg, #a0a7d8, #757fc6)',
           skills: [
             { name: 'Vue.js', main: true },
             { name: 'JavaScript', main: true },
             { name: 'HTML5', main: true },
-            { name: 'CSS3/SCSS', main: true },
+            { name: 'CSS3', main: true },
+            'SCSS',
             'Responsive Design',
-            'Web Components',
             'Semantic HTML',
           ],
         },
         {
-          name: 'WordPress Expertise',
+          name: 'WordPress & Content Systems',
           icon: PuzzlePieceIcon,
           color: 'linear-gradient(135deg, #b5a0d8, #9375c6)',
           skills: [
-            { name: 'WordPress', main: true },
-            { name: 'Gutenberg Blocks', main: true },
+            { name: 'Custom Gutenberg Blocks', main: true },
+            { name: 'Custom Themes', main: true },
             { name: 'PHP', main: true },
-            { name: 'WPEngine', main: true },
-            'Custom Theme Development',
-            'Plugin Development',
-            'ACF PRO',
+            'ACF Pro',
+            'Reusable Content Architecture',
           ],
         },
         {
-          name: 'Performance & Quality',
-          icon: BoltIcon,
+          name: 'Accessibility & Quality',
+          icon: ShieldCheckIcon,
           color: 'linear-gradient(135deg, #ffc39e, #ff9d61)',
           skills: [
-            { name: 'Performance Optimization', main: true },
-            { name: 'Core Web Vitals', main: true },
-            { name: 'Lighthouse', main: true },
             { name: 'WCAG 2.2', main: true },
-            'Image Optimization',
-            'BugSnag',
-            'Cypress',
+            { name: 'Keyboard Interaction', main: true },
+            { name: 'Focus Management', main: true },
+            'Responsive Zoom',
+            'Reduced Motion',
+            'Lighthouse',
+            'Core Web Vitals',
+          ],
+        },
+        {
+          name: 'Product Integration',
+          icon: ServerIcon,
+          color: 'linear-gradient(135deg, #ef8d9c, #e7576d)',
+          skills: [
+            { name: 'REST APIs', main: true },
+            { name: 'JSON', main: true },
+            'Front-End State',
+            'Backend Workflows',
+            'Form Behaviour',
+            'Analytics-Supported Interfaces',
           ],
         },
         {
@@ -317,42 +404,25 @@ export default {
           color: 'linear-gradient(135deg, #6b8fd8, #3b6acb)',
           skills: [
             { name: 'Git', main: true },
-            { name: 'Vite', main: true },
-            { name: 'Webpack', main: true },
-            'CodeShip',
-            'CodeScene',
-            'npm/yarn',
-            'GitHub Actions',
-            'VS Code',
-            'SFTP',
+            { name: 'GitHub', main: true },
+            'npm',
+            'Vite',
+            'Webpack',
+            'ESLint',
+            'Figma',
+            'BrowserStack',
+            'Technical Documentation',
           ],
         },
         {
-          name: 'API Integration',
-          icon: ServerIcon,
-          color: 'linear-gradient(135deg, #ef8d9c, #e7576d)',
-          skills: [
-            { name: 'RESTful APIs', main: true },
-            { name: 'DevTools Network Tab', main: true },
-            { name: 'JSON Data Handling', main: true },
-            'API Troubleshooting',
-            'Headless CMS',
-            'Segment.io',
-            'Node.js',
-          ],
-        },
-        {
-          name: 'Design & Analytics',
-          icon: ChartBarIcon,
+          name: 'Currently Developing',
+          icon: SparklesIcon,
           color: 'linear-gradient(135deg, #7dd3c8, #4fc4b5)',
           skills: [
-            { name: 'Google Analytics', main: true },
-            { name: 'HubSpot', main: true },
-            { name: 'Figma', main: true },
-            'UX Principles',
-            'Accessibility',
-            'A/B Testing',
-            'Event Tracking',
+            'React',
+            'AI-Assisted Development Workflows',
+            'Design Systems',
+            'Motion with Accessibility Safeguards',
           ],
         },
       ],
@@ -459,15 +529,53 @@ export default {
   border: 0;
 }
 
-// Profile image
-.profile-image {
-  height: auto;
-  transform: rotate(-2deg);
-  transition: all 0.3s ease;
+// Profile portrait — shared organic-droplet treatment
+.portrait {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 200px;
+  aspect-ratio: 1/1;
+  margin: 0 auto;
+}
+
+.portrait__backdrop,
+.portrait .profile-image,
+.portrait__outline {
+  @include organic-droplet;
+}
+
+.portrait__backdrop {
+  position: absolute;
+  inset: -0.75rem 0.25rem 0.25rem -0.75rem;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.78) 0%,
+    rgba(125, 211, 200, 0.24) 42%,
+    rgba(160, 167, 216, 0.16) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  z-index: -2;
+}
+
+.portrait .profile-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 
   &:hover {
-    transform: rotate(0) scale(1.02);
+    transform: scale(1.02);
   }
+}
+
+.portrait__outline {
+  position: absolute;
+  inset: 0.65rem -0.65rem -0.65rem 0.65rem;
+  border: 1px solid rgba(107, 143, 216, 0.48);
+  z-index: -1;
+  pointer-events: none;
 }
 
 // Philosophy section
@@ -546,6 +654,34 @@ export default {
   .highlight {
     @include light-text-gradient;
     font-weight: 600;
+  }
+}
+
+// Engineering Principles
+.principles-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+
+  @include breakpoint-up(md) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+.principle-card {
+  @include light-card;
+
+  h3 {
+    color: $text-primary;
+    font-size: $font-size-h5;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    color: $text-secondary;
+    margin: 0;
   }
 }
 

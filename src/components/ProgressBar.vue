@@ -1,13 +1,6 @@
 <template>
-  <div class="progress-bar">
-    <div
-      class="progress-bar__fill"
-      :style="{ width: progress + '%' }"
-      aria-valuenow="progress"
-      aria-valuemin="0"
-      aria-valuemax="100"
-      role="progressbar"
-    ></div>
+  <div class="progress-bar" aria-hidden="true">
+    <div class="progress-bar__fill" :style="{ width: progress + '%' }"></div>
   </div>
 </template>
 

@@ -34,7 +34,23 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
+      - name: Check EmailJS configuration
+        env:
+          VUE_APP_EMAILJS_SERVICE_ID: ${{ secrets.VUE_APP_EMAILJS_SERVICE_ID }}
+          VUE_APP_EMAILJS_TEMPLATE_ID: ${{ secrets.VUE_APP_EMAILJS_TEMPLATE_ID }}
+          VUE_APP_EMAILJS_PUBLIC_KEY: ${{ secrets.VUE_APP_EMAILJS_PUBLIC_KEY }}
+          VUE_APP_CONTACT_EMAIL: ${{ secrets.VUE_APP_CONTACT_EMAIL }}
+        run: |
+          test -n "$VUE_APP_EMAILJS_SERVICE_ID"
+          test -n "$VUE_APP_EMAILJS_TEMPLATE_ID"
+          test -n "$VUE_APP_EMAILJS_PUBLIC_KEY"
+          test -n "$VUE_APP_CONTACT_EMAIL"
       - name: Build
+        env:
+          VUE_APP_EMAILJS_SERVICE_ID: ${{ secrets.VUE_APP_EMAILJS_SERVICE_ID }}
+          VUE_APP_EMAILJS_TEMPLATE_ID: ${{ secrets.VUE_APP_EMAILJS_TEMPLATE_ID }}
+          VUE_APP_EMAILJS_PUBLIC_KEY: ${{ secrets.VUE_APP_EMAILJS_PUBLIC_KEY }}
+          VUE_APP_CONTACT_EMAIL: ${{ secrets.VUE_APP_CONTACT_EMAIL }}
         run: npm run build
       - name: Copy 404.html for history mode
         run: cp dist/index.html dist/404.html

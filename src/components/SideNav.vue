@@ -5,6 +5,7 @@
     </button>
     <nav
       v-show="!isCollapsed || !isMobile"
+      ref="nav"
       class="side-nav"
       :class="{ collapsed: isCollapsed }"
     >
@@ -29,7 +30,12 @@
             :to="item.link"
             custom
           >
-            <a :href="href" :class="{ active: isActive }" @click="navigate">
+            <a
+              :href="href"
+              :class="{ active: isActive }"
+              :aria-label="item.title"
+              @click="navigate($event), closeMobileNav()"
+            >
               <span class="icon">
                 <component :is="item.icon" class="hero-icon" />
                 <span
@@ -82,6 +88,9 @@ import {
   XMarkIcon,
   Bars3Icon,
 } from '@heroicons/vue/24/outline'
+import { useFocusTrap } from '@/composables/useFocusTrap'
+
+const { trapFocus } = useFocusTrap()
 
 export default {
   components: {
@@ -105,6 +114,7 @@ export default {
     return {
       isMobile: false,
       hoverItem: null,
+      mobileNavTrigger: null,
       menuItems: [
         { title: 'Welcome', link: '/welcome', icon: 'HomeIcon' },
         { title: 'About Me', link: '/about', icon: 'UserIcon' },
@@ -112,6 +122,25 @@ export default {
         { title: 'Get in Touch', link: '/contact', icon: 'EnvelopeIcon' },
       ],
     }
+  },
+  watch: {
+    isCollapsed(isNowCollapsed) {
+      if (!this.isMobile) return
+
+      if (!isNowCollapsed) {
+        // Mobile nav just opened as a full-screen overlay
+        this.mobileNavTrigger = document.activeElement
+        document.body.style.overflow = 'hidden'
+        this.$nextTick(() => {
+          this.$refs.nav?.querySelector('a, button')?.focus()
+        })
+      } else {
+        // Mobile nav just closed
+        document.body.style.overflow = ''
+        this.mobileNavTrigger?.focus()
+        this.mobileNavTrigger = null
+      }
+    },
   },
   mounted() {
     // Initial check for mobile devices
@@ -126,6 +155,7 @@ export default {
     window.removeEventListener('resize', this.updateIsMobile)
     // Remove the event listener when the component is destroyed
     window.removeEventListener('keydown', this.handleKeyDown)
+    document.body.style.overflow = ''
   },
   methods: {
     isActiveRoute(link) {
@@ -136,10 +166,26 @@ export default {
       // Check if the key pressed is '['
       if (event.key === '[') {
         this.toggleNav()
+        return
+      }
+
+      // While the mobile nav is open as a full-screen overlay, trap Tab
+      // and let Escape close it.
+      if (this.isMobile && !this.isCollapsed) {
+        if (event.key === 'Escape') {
+          this.closeMobileNav()
+        } else if (event.key === 'Tab') {
+          trapFocus(this.$refs.nav, event)
+        }
       }
     },
     toggleNav() {
       this.$emit('update:isCollapsed', !this.isCollapsed)
+    },
+    closeMobileNav() {
+      if (this.isMobile && !this.isCollapsed) {
+        this.toggleNav()
+      }
     },
     updateIsMobile() {
       // Updates the isMobile property based on the screen width
@@ -178,6 +224,10 @@ export default {
   backdrop-filter: blur(8px);
   border: 1px solid $surface-border;
   padding: $space-2;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
   border-radius: 8px;
   cursor: pointer;
   color: $text-primary;
@@ -246,7 +296,7 @@ export default {
       transform: translateX(-50%);
       width: 12px;
       height: 2px;
-      background-color: $color-selected;
+      background-color: $primary-deep-blue;
     }
   }
 
@@ -351,7 +401,7 @@ export default {
           font-size: 1rem;
 
           &.active {
-            background: rgba($interactive-primary, 0.1);
+            background: $surface-cool;
           }
         }
 
@@ -376,12 +426,12 @@ export default {
         }
 
         &.active {
-          background: rgba($interactive-primary, 0.08);
-          color: $interactive-primary;
+          background: $surface-cool;
+          color: $text-primary;
 
           .icon .hero-icon {
-            color: $interactive-primary;
-            stroke: $interactive-primary;
+            color: $primary-deep-blue;
+            stroke: $primary-deep-blue;
           }
         }
 
