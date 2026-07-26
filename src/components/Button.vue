@@ -271,6 +271,9 @@ export default {
   // Variant styles using your existing design system
   &--primary {
     @include light-button-primary;
+    * {
+      color: $text-inverse;
+    }
   }
 
   &--secondary {

@@ -472,10 +472,10 @@ export default {
   height: 100%;
   background: linear-gradient(
     45deg,
-    rgba(239, 141, 156, 0.1) 25%,
+    rgba($primary-aqua, 0.1) 25%,
     transparent 25%,
     transparent 75%,
-    rgba(239, 141, 156, 0.1) 75%
+    rgba($primary-aqua, 0.1) 75%
   );
   background-size: 20px 20px;
   opacity: 0;

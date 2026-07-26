@@ -100,7 +100,7 @@
       <!-- Background Gradients -->
       <BackgroundShades
         primary-color="purple"
-        secondary-color="coral"
+        secondary-color="blue-bell"
         tertiary-color="aqua"
         :show-tertiary="true"
         :animated="true"

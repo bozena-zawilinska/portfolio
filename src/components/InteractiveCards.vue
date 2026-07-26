@@ -271,11 +271,11 @@ export default {
   }
 
   &--passion:before {
-    background: $gradient-icon-coral;
+    background: $gradient-icon-navy;
   }
 
   &--innovation:before {
-    background: $gradient-icon-peach;
+    background: $gradient-icon-sea;
   }
 
   &--performance:before {

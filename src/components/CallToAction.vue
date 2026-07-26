@@ -129,7 +129,7 @@ export default {
         right: 15%;
         border-radius: 45% 55% 40% 60% / 55% 45% 60% 40%;
         animation: float 8s ease-in-out infinite reverse;
-        background: $gradient-droplet-coral;
+        background: $gradient-droplet-deep-blue;
       }
 
       &--3 {

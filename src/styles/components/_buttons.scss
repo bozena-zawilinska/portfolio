@@ -64,10 +64,10 @@
     &:hover {
       background: linear-gradient(
         to bottom left,
-        lighten($soft-red, 5%) 40%,
-        lighten($pale-orange, 5%) 100%
+        lighten($primary-navy, 5%) 40%,
+        lighten($primary-sea-blue, 5%) 100%
       );
-      box-shadow: 0 6px 20px rgba(239, 141, 156, 0.3);
+      box-shadow: 0 6px 20px rgba($primary-navy, 0.3);
       transform: translateY(-2px);
 
       &::before {
@@ -229,8 +229,8 @@
 
     &:hover:before {
       top: -70%;
-      background-image: radial-gradient(circle, $soft-red 20%, transparent 20%),
-        radial-gradient(circle, $pale-orange 20%, transparent 20%),
+      background-image: radial-gradient(circle, $primary-navy 20%, transparent 20%),
+        radial-gradient(circle, $primary-sea-blue 20%, transparent 20%),
         radial-gradient(circle, $soft-green 20%, transparent 20%),
         radial-gradient(circle, $lavender 20%, transparent 20%),
         radial-gradient(circle, $blue-bell 20%, transparent 20%);
@@ -243,7 +243,7 @@
       bottom: -70%;
       background-image: radial-gradient(circle, $soft-cyan 20%, transparent 20%),
         radial-gradient(circle, $wisteria 20%, transparent 20%),
-        radial-gradient(circle, $soft-red 20%, transparent 20%);
+        radial-gradient(circle, $primary-navy 20%, transparent 20%);
       background-size: 16% 16%, 12% 12%, 14% 14%;
       background-position: 20% 0%, 50% -10%, 80% 5%;
       animation: confettiAfter 0.8s ease-out forwards;
