@@ -2,11 +2,11 @@
 * COLOR PALETTE - LIGHT THEME
 */
 
-// Primary Brand Colors (matching your hero gradient)
-$primary-coral: #ef8d9c;
-$primary-peach: #ffc39e;
+// Primary Brand Colors (sea/blue palette, matching the CV)
 $primary-purple: #b5a0d8;
 $primary-blue: #a0a7d8;
+$primary-navy: #27446f;
+$primary-sea-blue: #315c95;
 
 // Water/molecule accent layer colors
 $primary-aqua: #7dd3c8;
@@ -16,7 +16,7 @@ $primary-deep-blue: #6b8fd8;
 $background-primary: #ffffff;
 $background-secondary: #fafcfc;
 $background-tertiary: #f8fafc;
-$background-accent: rgba(239, 141, 156, 0.05); // Very light coral tint
+$background-accent: rgba($primary-deep-blue, 0.05); // Very light deep-blue tint
 
 // Text Colors (WCAG 2.2 AA Compliant)
 $text-primary: #1f2937; // Dark gray for main text (contrast ratio: 12.63:1)
@@ -47,40 +47,38 @@ $glass-strong: rgba(255, 255, 255, 0.4);
 $glass-border: rgba(255, 255, 255, 0.5);
 
 // Accent Gradients
-$gradient-hero: linear-gradient(to bottom left,
-        $primary-coral 40%,
-        $primary-peach 100%);
 $gradient-purple: linear-gradient(135deg,
         $primary-purple 0%,
         rgba($primary-purple, 0.3) 100%);
 $gradient-blue: linear-gradient(135deg,
         $primary-blue 0%,
         rgba($primary-blue, 0.3) 100%);
-$gradient-coral: linear-gradient(135deg,
-        $primary-coral 0%,
-        rgba($primary-coral, 0.3) 100%);
 $gradient-water: linear-gradient(135deg,
         $primary-aqua 0%,
         $primary-blue 60%,
         $primary-purple 100%);
+// Shared "hero" gradient — aliases the water gradient so every consumer
+// (heading text-clip, scroll-to-top button, skill badges, etc.) stays
+// on the same sea/blue family used throughout the site and the CV.
+$gradient-hero: $gradient-water;
 $gradient-droplet: radial-gradient(circle at 30% 30%,
         rgba(255, 255, 255, 0.6) 0%,
         rgba($primary-aqua, 0.3) 40%,
         rgba($primary-blue, 0.15) 100%);
-$gradient-droplet-coral: radial-gradient(circle at 30% 30%,
-        rgba(255, 255, 255, 0.6) 0%,
-        rgba($primary-coral, 0.3) 40%,
-        rgba($primary-peach, 0.15) 100%);
 $gradient-droplet-purple: radial-gradient(circle at 30% 30%,
         rgba(255, 255, 255, 0.6) 0%,
         rgba($primary-purple, 0.3) 40%,
         rgba($primary-blue, 0.15) 100%);
-$gradient-button-primary: radial-gradient(circle at 25% 20%,
-        rgba(255, 255, 255, 0.35) 0%,
-        rgba(255, 255, 255, 0) 55%),
-    linear-gradient(135deg,
-        $primary-coral 0%,
-        $primary-peach 100%);
+$gradient-droplet-deep-blue: radial-gradient(circle at 30% 30%,
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba($primary-deep-blue, 0.3) 40%,
+        rgba($primary-blue, 0.15) 100%);
+// Primary button gradient — exact match to the CV's Section 04
+// (The Areté Club) spotlight-card background.
+$gradient-button-primary: linear-gradient(145deg,
+        $text-primary 0%,
+        $primary-navy 58%,
+        $primary-sea-blue 100%);
 $gradient-button-secondary: linear-gradient(135deg,
         rgba($primary-aqua, 0.1) 0%,
         rgba($primary-blue, 0.1) 100%);
@@ -97,12 +95,12 @@ $gradient-water-rule: linear-gradient(90deg,
 // Second stop is each primary color at -12% HSL lightness — hardcoded
 // (rather than darken()) so these hex values can be mirrored exactly
 // in JS-driven inline styles (see AboutPage/InteractiveCards/JourneyBadges).
-$gradient-icon-coral: linear-gradient(135deg,
-        $primary-coral 0%,
-        #e7576d 100%);
-$gradient-icon-peach: linear-gradient(135deg,
-        $primary-peach 0%,
-        #ff9d61 100%);
+$gradient-icon-navy: linear-gradient(135deg,
+        $primary-navy 0%,
+        $text-primary 100%);
+$gradient-icon-sea: linear-gradient(135deg,
+        $primary-sea-blue 0%,
+        $primary-navy 100%);
 $gradient-icon-purple: linear-gradient(135deg,
         $primary-purple 0%,
         #9375c6 100%);
@@ -137,8 +135,6 @@ $white: #ffffff;
 $lavender: #b5a0d8;
 $wisteria: #d1a0d8;
 $blue-bell: #a0a7d8;
-$soft-red: #ef8d9c;
-$pale-orange: #ffc39e;
 $soft-green: #b0db7d;
 $soft-cyan: #99dbb4;
 $font-dark: $text-primary;
@@ -186,9 +182,6 @@ $gradient-soft-background: linear-gradient(135deg,
 $gradient-card: linear-gradient(135deg,
         $surface-primary 0%,
         $surface-secondary 100%);
-$gradient-accent-light: linear-gradient(135deg,
-        rgba($primary-coral, 0.1) 0%,
-        rgba($primary-peach, 0.1) 100%);
 
 // Font Sizes
 $font-size-small: 0.833rem;

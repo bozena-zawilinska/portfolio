@@ -167,10 +167,10 @@ export default {
   }
 
   &--implementation {
-    border-top: 4px solid $primary-coral;
+    border-top: 4px solid $primary-deep-blue;
 
     .journey-icon {
-      color: $primary-coral;
+      color: $primary-deep-blue;
     }
   }
 

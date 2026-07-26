@@ -374,7 +374,7 @@ export default {
         {
           name: 'Accessibility & Quality',
           icon: ShieldCheckIcon,
-          color: 'linear-gradient(135deg, #ffc39e, #ff9d61)',
+          color: 'linear-gradient(135deg, #315c95, #27446f)',
           skills: [
             { name: 'WCAG 2.2', main: true },
             { name: 'Keyboard Interaction', main: true },
@@ -388,7 +388,7 @@ export default {
         {
           name: 'Product Integration',
           icon: ServerIcon,
-          color: 'linear-gradient(135deg, #ef8d9c, #e7576d)',
+          color: 'linear-gradient(135deg, #27446f, #1f2937)',
           skills: [
             { name: 'REST APIs', main: true },
             { name: 'JSON', main: true },
