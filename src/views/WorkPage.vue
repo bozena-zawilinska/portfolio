@@ -1115,7 +1115,6 @@ export default {
 
   // Featured projects - enhanced UX improvements
   .featured-card {
-    position: relative;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transform-origin: top center;
 

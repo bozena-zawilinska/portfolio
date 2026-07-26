@@ -73,9 +73,15 @@ export default {
       type: String,
       default: 'purple',
       validator: (value) =>
-        ['purple', 'coral', 'blue', 'green', 'orange', 'pink', 'aqua'].includes(
-          value
-        ),
+        [
+          'purple',
+          'blue',
+          'blue-bell',
+          'green',
+          'orange',
+          'pink',
+          'aqua',
+        ].includes(value),
     },
 
     /**
@@ -83,11 +89,17 @@ export default {
      */
     secondaryColor: {
       type: String,
-      default: 'coral',
+      default: 'blue-bell',
       validator: (value) =>
-        ['purple', 'coral', 'blue', 'green', 'orange', 'pink', 'aqua'].includes(
-          value
-        ),
+        [
+          'purple',
+          'blue',
+          'blue-bell',
+          'green',
+          'orange',
+          'pink',
+          'aqua',
+        ].includes(value),
     },
 
     /**
@@ -99,7 +111,6 @@ export default {
       validator: (value) =>
         [
           'purple',
-          'coral',
           'blue',
           'green',
           'orange',
@@ -224,10 +235,6 @@ export default {
   // Color variants
   &--purple {
     background: $gradient-purple;
-  }
-
-  &--coral {
-    background: $gradient-coral;
   }
 
   &--blue {
