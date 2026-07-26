@@ -220,7 +220,6 @@ export default {
       font-size: 0.875rem;
       line-height: 1.5;
       font-style: italic;
-      opacity: 0.8;
     }
   }
 }

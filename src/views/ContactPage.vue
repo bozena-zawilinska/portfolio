@@ -7,16 +7,19 @@
           <TypingAnimation
             id="my-work-heading"
             class="header animated-heading text--flex-center"
-            text="Let's work together!"
+            text="Let's Talk"
             :speed="80"
             wrapper-element="h1"
             custom-cursor-class="heading"
             @typing-finished="onFirstAnimationFinished"
           />
           <p class="intro-text" :class="{ 'is-animated': animationComplete }">
-            Have an exciting project or idea? Let’s collaborate to create
-            something amazing! I’m always open to discussing new opportunities
-            or connecting with like-minded professionals.
+            I enjoy working with teams that care about accessible interfaces,
+            maintainable code and thoughtful product decisions.
+          </p>
+          <p class="intro-text" :class="{ 'is-animated': animationComplete }">
+            If you're hiring a Front-End Engineer or would like to discuss a
+            suitable project, send me a message or connect with me directly.
           </p>
         </div>
 
@@ -253,6 +256,11 @@
               <span>Email</span>
             </button>
           </div>
+
+          <p class="group-location">
+            <MapPinIcon class="location-icon" aria-hidden="true" />
+            <span>Hamilton, Scotland</span>
+          </p>
         </div>
       </div>
     </div>
@@ -271,7 +279,7 @@
 
 <script>
 import emailjs from '@emailjs/browser'
-import { EnvelopeIcon } from '@heroicons/vue/24/outline'
+import { EnvelopeIcon, MapPinIcon } from '@heroicons/vue/24/outline'
 import BaseButton from '@/components/Button.vue'
 import BackgroundShades from '@/components/BackgroundShades.vue'
 import ScrollToTopButton from '@/components/ScrollToTopButton.vue'
@@ -280,27 +288,9 @@ import ProgressBar from '@/components/ProgressBar.vue'
 
 export default {
   name: 'ContactPage',
-  metaInfo: {
-    title: 'Contact Me - Bozena Zawilinska | Vue.js & WordPress Developer',
-    meta: [
-      {
-        name: 'description',
-        content:
-          'Get in touch with Bozena Zawilinska, a Vue.js and WordPress developer. Let’s collaborate on your next web project or discuss new opportunities.',
-      },
-      { property: 'og:title', content: 'Contact Me - Bozena Zawilinska' },
-      {
-        property: 'og:description',
-        content:
-          'Contact Bozena for web development, Vue.js, WordPress, and accessible website projects.',
-      },
-      { property: 'og:type', content: 'website' },
-      { property: 'og:url', content: 'https://bozena-zawilinska.com/contact' },
-    ],
-    link: [{ rel: 'canonical', href: 'https://bozena-zawilinska.com/contact' }],
-  },
   components: {
     EnvelopeIcon,
+    MapPinIcon,
     BaseButton,
     BackgroundShades,
     ScrollToTopButton,
@@ -617,6 +607,21 @@ export default {
     @include breakpoint-up(lg) {
       flex-direction: row;
       flex-wrap: wrap;
+    }
+  }
+
+  .group-location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+    color: $text-tertiary;
+    font-size: 0.9rem;
+
+    .location-icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
     }
   }
 

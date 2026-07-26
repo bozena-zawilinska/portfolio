@@ -4,6 +4,7 @@
     <ProgressBar :progress="scrollProgress" />
 
     <div class="container">
+      <p class="eyebrow text--flex-center">Selected Work</p>
       <TypingAnimation
         id="my-work-heading"
         class="header animated-heading text--flex-center"
@@ -28,29 +29,28 @@
 
         <h2 class="visually-hidden">What I Bring to the Table</h2>
         <p>
-          I'm a <strong>Front-End Developer</strong> with professional WordPress
+          My work spans SaaS product development, WordPress platforms, reusable
+          component systems and accessible responsive websites. Each project
+          below explains the problem, my role, the implementation and the value
+          created for users or the team maintaining it.
+        </p>
+
+        <p>
+          I'm a <strong>Front-End Engineer</strong> with professional WordPress
           experience dating back to 2015 and commercial Vue.js experience since
-          joining ProdPad in 2022. In 2026, I also began developing my React
-          skills through independent learning and building The Areté Club.
+          joining ProdPad in 2022. I began developing my React skills in 2026
+          through independent learning and building The Areté Club.
         </p>
 
         <p>
-          My work spans SaaS product development, responsive business websites,
-          reusable Vue components, custom Gutenberg blocks, accessibility
-          improvements, API-connected interfaces, and front-end documentation.
           At ProdPad, I have contributed to both the core product and the
-          marketing website, working closely with product, design, backend, and
-          marketing colleagues.
-        </p>
-
-        <p>
-          I focus on
+          marketing website, working closely with product, design, backend and
+          marketing colleagues. I focus on
           <span class="highlight"
-            >accessible interfaces, maintainable code, and dependable
+            >accessible interfaces, maintainable code and dependable
             implementation</span
-          >. The projects below show how I translate designs and requirements
-          into production websites and product features while considering
-          performance, usability, and the needs of the teams maintaining them.
+          >, considering performance, usability and the needs of the teams
+          maintaining what I build.
         </p>
       </UnifiedSection>
 
@@ -91,6 +91,10 @@
               <p class="card__description">
                 {{ project.summary }}
               </p>
+              <p v-if="project.skills" class="card__technologies">
+                <span class="card__technologies-label">Core technologies:</span>
+                {{ project.skills.join(' · ') }}
+              </p>
             </div>
             <div
               v-if="project.showDetails"
@@ -102,19 +106,32 @@
               :id="'project-details-' + project.id"
               class="card__details"
               :class="{ show: project.showDetails }"
-              :aria-expanded="project.showDetails"
             >
               <div class="details__content">
                 <div class="details__text-content">
-                  <p
-                    v-for="(line, index) in project.description
-                      .trim()
-                      .split('\n')"
-                    :key="index"
-                    class="details__text"
-                  >
-                    {{ line }}
-                  </p>
+                  <template v-if="project.caseStudy">
+                    <div
+                      v-for="section in project.caseStudy"
+                      :key="section.heading"
+                      class="case-study__section"
+                    >
+                      <h5 class="case-study__heading">
+                        {{ section.heading }}
+                      </h5>
+                      <p class="details__text">{{ section.text }}</p>
+                    </div>
+                  </template>
+                  <template v-else>
+                    <p
+                      v-for="(line, index) in project.description
+                        .trim()
+                        .split('\n')"
+                      :key="index"
+                      class="details__text"
+                    >
+                      {{ line }}
+                    </p>
+                  </template>
                 </div>
 
                 <div
@@ -393,74 +410,6 @@ export default {
     InteractiveCards,
     UnifiedSection,
   },
-  metaInfo() {
-    return {
-      title: 'My Work - Bozena Zawilinska | Front-End Developer Portfolio',
-      meta: [
-        {
-          name: 'description',
-          content:
-            'Explore front-end projects by Bozena Zawilinska, including Vue.js product development, WordPress websites, custom Gutenberg blocks, and a React business website.',
-        },
-        {
-          name: 'keywords',
-          content:
-            'front-end developer, Vue.js developer, WordPress developer, React developer, Gutenberg blocks, accessible websites, web development portfolio',
-        },
-        {
-          property: 'og:title',
-          content: 'My Work - Bozena Zawilinska | Front-End Developer',
-        },
-        {
-          property: 'og:description',
-          content:
-            'Explore front-end projects by Bozena Zawilinska, including Vue.js product development, WordPress websites, custom Gutenberg blocks, and a React business website.',
-        },
-        { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: 'https://bozena-zawilinska.com/work' },
-        { name: 'twitter:card', content: 'summary_large_image' },
-        {
-          name: 'twitter:title',
-          content: 'My Work - Bozena Zawilinska | Front-End Developer',
-        },
-        {
-          name: 'twitter:description',
-          content:
-            'Explore my Vue.js, WordPress, accessibility, and React website projects.',
-        },
-      ],
-      link: [{ rel: 'canonical', href: 'https://bozena-zawilinska.com/work' }],
-      script: [
-        {
-          type: 'application/ld+json',
-          json: {
-            '@context': 'https://schema.org',
-            '@type': 'Portfolio',
-            name: "Bozena Zawilinska's Web Development Portfolio",
-            description:
-              'Portfolio showcasing Vue.js product development, WordPress websites, custom Gutenberg blocks, and a React business website',
-            url: 'https://bozena-zawilinska.com/work',
-            author: {
-              '@type': 'Person',
-              name: 'Bozena Zawilinska',
-              jobTitle: 'Front-End Developer',
-              url: 'https://bozena-zawilinska.com',
-            },
-            workExample: this.projects.slice(0, 4).map((project) => ({
-              '@type': 'CreativeWork',
-              name: project.title,
-              description: project.summary,
-              url: project.link,
-              creator: {
-                '@type': 'Person',
-                name: 'Bozena Zawilinska',
-              },
-            })),
-          },
-        },
-      ],
-    }
-  },
   data() {
     return {
       imageLoaded: false,
@@ -543,10 +492,30 @@ export default {
           logo: 'prodpad/logo.png',
           role: 'Front-End Developer',
           summary:
-            'Improved UX and accessibility for a product management platform by building reusable Vue.js components, refining the payment flow, maintaining and debugging existing features, and creating documentation to support future development.',
+            'Built and refined Vue.js product features for an established product-management platform, with a focus on reusable components, accessible interaction, dependable workflow behaviour and maintainable implementation.',
           showDetails: false,
-          description:
-            'I worked closely with the Product and Design teams to make the ProdPad platform more intuitive, inclusive, and user-friendly. My main focus was building a library of reusable Vue.js components to speed up development and improve consistency across the app.\n\nI contributed to improving the payment and subscription flow in areas powered by Recurly, and supported the frontend for analytics and CRM features tied to tools like Segment, Mixpanel, PostHog, and HubSpot. While I didn’t build the integrations from scratch, I helped ensure the frontend worked smoothly with existing APIs and services.\n\nClean, accessible, and maintainable code was always my priority. I used ESLint for consistency, followed accessibility best practices, and proactively improved documentation. I led efforts to document our front-end components using JSDoc, and created and maintained clear, developer-friendly guides in our FE repo Wiki, making onboarding and handover easier for the whole team.\n\n',
+          caseStudy: [
+            {
+              heading: 'Overview',
+              text: 'ProdPad is a product-management SaaS platform used by product teams to collect feedback, develop ideas and plan roadmaps. I work within the front-end team on established and evolving Vue.js architecture, collaborating with product, design, backend and other front-end engineers.',
+            },
+            {
+              heading: 'The challenge',
+              text: 'Product features often connect multiple components, APIs, states and backend workflows. The interface needs to remain understandable for users while handling edge cases, asynchronous behaviour and existing product conventions.',
+            },
+            {
+              heading: 'What I built',
+              text: 'I develop reusable Vue.js components and product features, improve existing interactions, connect front-end interfaces to backend APIs and workflow systems, and support complex form, onboarding and navigation behaviour.',
+            },
+            {
+              heading: 'Accessibility and quality',
+              text: 'I consider semantic structure, labels, keyboard interaction, focus behaviour, responsive layouts and maintainable state handling throughout implementation. I also write technical documentation and clarify connected workflows for future developers.',
+            },
+            {
+              heading: 'Outcome',
+              text: 'The work improves consistency across the product, makes complex workflows easier to use and gives the team clearer foundations for future changes.',
+            },
+          ],
           link: 'https://www.prodpad.com/sandbox/',
           skills: ['Vue 3', 'HTML5', 'SCSS', 'JavaScript', 'RESTful APIs'],
           tools: ['Git', 'npm', 'Vite', 'ESLint', 'Figma'],
@@ -567,10 +536,30 @@ export default {
           logo: 'prodpad/logo.png',
           role: 'WordPress Developer',
           summary:
-            'Developed 20+ custom Gutenberg blocks and optimized website performance, achieving 95+ PageSpeed scores while enabling flexible content management for marketing teams.',
+            'Built and maintained more than 20 custom Gutenberg blocks, giving the marketing team flexible content tools while preserving accessibility, performance and visual consistency.',
           showDetails: false,
-          description:
-            'As the sole developer responsible for the ProdPad marketing website, I built and maintained a library of more than 20 custom Gutenberg blocks. These blocks gave the marketing team flexible, reusable page sections they could manage without requiring a developer for routine content changes.\n\nI supported HubSpot forms and lead capture, analytics and advertising scripts, responsive layouts, WordPress maintenance, and performance improvements. My optimisation work helped key pages achieve PageSpeed scores of 95 or above across desktop and mobile.\n\nThis role required balancing marketing flexibility with code quality, accessibility, consistent design, and site performance. I also handled ongoing debugging, releases, and technical improvements across the website.',
+          caseStudy: [
+            {
+              heading: 'Overview',
+              text: 'I was the developer responsible for the ProdPad marketing website, supporting new pages, reusable WordPress blocks, integrations, maintenance and releases.',
+            },
+            {
+              heading: 'The challenge',
+              text: 'The marketing team needed freedom to build and update pages without creating inconsistent layouts or requiring a developer for routine content changes.',
+            },
+            {
+              heading: 'What I built',
+              text: 'I created a library of more than 20 custom Gutenberg blocks and supported HubSpot forms, lead capture, analytics and advertising scripts, responsive layouts, WordPress maintenance and technical releases.',
+            },
+            {
+              heading: 'Performance and quality',
+              text: 'I balanced content flexibility with semantic markup, accessibility, consistent design and performance. My optimisation work helped key pages maintain PageSpeed scores of 95 or above across desktop and mobile.',
+            },
+            {
+              heading: 'Outcome',
+              text: 'The block system reduced dependency on development for everyday page creation while keeping the site easier to maintain and visually consistent.',
+            },
+          ],
           link: 'https://www.prodpad.com/',
           skills: ['PHP', 'HTML & SCSS', 'JavaScript', 'Webpack', 'WordPress'],
           tools: ['ACF PRO', 'BrowserStack', 'GitHub', 'Figma'],
@@ -591,10 +580,22 @@ export default {
           logo: 'p4s/logo.png',
           role: 'Website Developer',
           summary:
-            'Built responsive WordPress websites from supplied designs, handling front-end development, theme customisation, local setup, testing, accessibility, and deployment for a range of clients.',
+            'Turned supplied designs into responsive WordPress websites for charities, public-sector organisations and businesses, covering implementation, accessibility, testing, content setup and deployment.',
           showDetails: false,
-          description:
-            'At Passion4Social, I worked with my manager and the design team to turn supplied PDF designs into responsive WordPress websites for charities, public-sector organisations, and other clients.\n\nUsing WordPress, the Genesis Framework, PHP, HTML, CSS, and jQuery, I handled theme implementation, responsive behaviour, local development, browser testing, accessibility requirements, content setup, and deployment.\n\nThis role strengthened my ability to interpret static designs, work independently, and adapt a shared technical foundation to the needs of different organisations and audiences.',
+          caseStudy: [
+            {
+              heading: 'Overview',
+              text: 'At Passion4Social, I worked with my manager and the design team to deliver websites for organisations with different audiences, content needs and accessibility requirements.',
+            },
+            {
+              heading: 'What I built',
+              text: 'Using WordPress, the Genesis Framework, PHP, HTML, CSS and jQuery, I implemented themes, responsive behaviour, local development environments, browser testing, content setup and deployment.',
+            },
+            {
+              heading: 'Outcome',
+              text: 'The role strengthened my ability to interpret static designs, work independently and adapt a shared technical foundation to different organisations and users.',
+            },
+          ],
           link: 'https://passion4social.com/',
           skills: [
             'PHP',
@@ -663,10 +664,26 @@ export default {
           logo: 'arete/arete-logo.png',
           role: 'Founder & Front-End Developer',
           summary:
-            'Designed, developed, and maintain a production website for my own brand, combining modern front-end development with accessibility, responsive design, performance, and SEO best practices.',
+            'Designed and built an independent React product that combines accessible UI, reusable components, editorial content architecture, SEO, performance and structured AI-assisted workflows.',
           showDetails: false,
-          description:
-            'The Areté Club is an independent business and learning project that I designed and built from the ground up in 2026. It is also the project through which I began developing practical experience with React.\n\nI own the complete website lifecycle, including information architecture, UX decisions, visual design, reusable React components, responsive SCSS, accessibility, SEO, deployment, analytics, and ongoing maintenance.\n\nBecause it supports a real business, I continue to improve the website based on user feedback and observed behaviour. The project demonstrates my ability to learn a new framework, make product decisions, and take a website from an early concept to a live production experience.',
+          caseStudy: [
+            {
+              heading: 'Overview',
+              text: 'The Areté Club is an independent product for ambitious women who want more clarity and structure without adding more noise. I am responsible for the product concept, website, content system, implementation and ongoing iteration.',
+            },
+            {
+              heading: 'The challenge',
+              text: 'The product needs to feel calm and editorial while remaining accessible, responsive, maintainable and clear enough for users who may already feel mentally overloaded.',
+            },
+            {
+              heading: 'What I built',
+              text: 'I designed and developed the website in React, created reusable interface components, established a content and brand system, implemented accessible interactions, and developed structured documentation for content creation and AI-assisted development.',
+            },
+            {
+              heading: 'What this demonstrates',
+              text: 'The project shows product thinking, independent decision-making, React learning in a real codebase, accessible front-end implementation, design-system thinking, SEO and documentation-led workflows.',
+            },
+          ],
           link: 'https://www.theareteclub.com/',
           skills: [
             'React',
@@ -1121,6 +1138,24 @@ export default {
       .details__text-content {
         margin-bottom: 1.5rem;
       }
+
+      .case-study__section {
+        margin-bottom: 1.25rem;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      .case-study__heading {
+        color: $text-muted-label;
+        font-family: 'Lato', sans-serif;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 0.4rem;
+      }
     }
 
     // Enhanced button styling
@@ -1227,6 +1262,18 @@ export default {
       font-weight: 600;
       margin: 0 0 1rem 0;
       line-height: 1.3;
+    }
+
+    // Always-visible core technologies line (not gated behind expand)
+    .card__technologies {
+      font-size: 0.875rem;
+      color: $text-tertiary;
+      margin-top: 0.75rem;
+    }
+
+    .card__technologies-label {
+      font-weight: 600;
+      color: $text-secondary;
     }
 
     // Enhanced overlay

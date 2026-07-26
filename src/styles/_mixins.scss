@@ -44,9 +44,9 @@
 }
 
 @mixin light-button-secondary {
-  background: $gradient-button-secondary;
-  color: $text-primary;
-  border: 2px solid rgba($primary-aqua, 0.35);
+  background: $surface-cool;
+  color: #34445b;
+  border: 2px solid $border-water-soft;
   border-radius: 12px;
   padding: 10px 22px;
   font-weight: 500;
@@ -57,11 +57,17 @@
   align-items: center;
 
   &:hover {
-    border-color: $primary-deep-blue;
-    color: $text-primary;
+    background: $surface-cool-hover;
+    color: #283548;
+    border-color: $border-water-medium;
     transform: translateY(-1px);
     box-shadow: $box-shadow-soft;
   }
+}
+
+// Large editorial portrait shape shared by the hero and About intro portraits
+@mixin organic-droplet {
+  border-radius: 58% 42% 56% 44% / 48% 60% 40% 52%;
 }
 
 @mixin light-text-gradient {
