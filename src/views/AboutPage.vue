@@ -17,6 +17,9 @@
               width="200"
               height="200"
               class="profile-image"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
             />
             <!-- <div class="portrait__outline" aria-hidden="true"></div> -->
           </div>

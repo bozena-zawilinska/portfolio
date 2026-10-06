@@ -24,6 +24,9 @@
             width="200"
             height="200"
             class="profile-image"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
           />
         </template>
 
