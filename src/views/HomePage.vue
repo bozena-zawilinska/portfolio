@@ -18,6 +18,9 @@
                 alt="Bozena Zawilinska, Front-End Engineer"
                 width="400"
                 height="400"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
               />
               <div class="portrait__outline" aria-hidden="true"></div>
             </div>
